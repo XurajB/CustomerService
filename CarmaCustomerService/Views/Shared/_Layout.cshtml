@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    <script src="~/Content/carma.js"></script>
+    <link href="~/Content/carma.css" rel="stylesheet" />
+</head>
+<body style="width: 1000px; margin: 5px auto">
+    <div id="header-logo">
+        <img src="~/Content/images/sbd.jpg"><i>CARMA Service Station</i>
+    </div>
+
+    <br />
+    <div id="header">
+        @using (Html.BeginForm("Search", "Home", FormMethod.Get))
+        {
+            <div class="header-items">@Html.DropDownList("brands")</div> 
+            <div class="header-items">@Html.DropDownList("searchType")</div>  @: &nbsp;&nbsp; | 
+            <div class="header-items" style="width: 600px">@Html.TextBox("searchText", "", new { style = "width: 595px" })</div> 
+            <div class="header-items">
+                <input type="submit" value="Search" /></div>
+            <span class="stretch"></span>
+        }
+    </div>
+
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+    <br />
+
+    <div id="footer">
+        CARMA Service Station web app version 1.0
+        <br/>
+        <a href="mailto:suraj.bhattarai@sbdinc.com?subject=CARMA CS IT HELP">CARMA IT Support</a>      |    <a href="https://sbdkproduction.service-now.com/navpage.do" target="_blank">Service-Now</a>
+        <br />
+        <a href="http://www.dewalt.com" target="_blank">www.dewalt.com </a>    |    <a href="http://www.blackanddecker.com" target="_blank">www.blackanddecker.com</a>   |   <a href="http://www.portercable.com" target="_blank">www.portercable.com</a>
+        <br />
+        &copy; @DateTime.Today.Year, <a href="http://www.sbdinc.com" target="_blank">SBD Inc</a>
+    </div>
+
+</body>
+</html>
+<div class="loading" align="center">
+    Loading. Please wait.<br />
+    <br />
+    <img src="/Content/Images/loading.gif" alt="" />
+</div>
+<script type="text/javascript">
+    $('form').live("submit", function () {
+        ShowProgress();
+    });
+</script>

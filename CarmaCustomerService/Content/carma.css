@@ -1,0 +1,102 @@
+﻿.modal
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: black;
+        z-index: 99;
+        opacity: 0.8;
+        filter: alpha(opacity=80);
+        -moz-opacity: 0.8;
+        min-height: 100%;
+        width: 100%;
+    }
+    .loading
+    {
+        font-family: Arial;
+        font-size: 10pt;
+        border: 5px solid #fa9f2f;
+        width: 200px;
+        height: 100px;
+        display: none;
+        position: fixed;
+        background-color: White;
+        z-index: 999;
+    }
+
+#header-logo {
+    vertical-align: middle;
+    font-size: 30px;
+    font-weight: bold;
+}
+#header-logo img {
+    width: 20%;
+    height: 20%;
+}
+
+#header {
+    vertical-align: middle;
+    border: 2px gold solid;
+    text-align: justify;
+    margin-bottom: 5px;
+}
+.header-items {
+    padding-left: 10px;
+    vertical-align: middle;
+    display: inline-block;
+    *display: inline;
+    zoom: 1 
+}
+.stretch {
+    
+    display: inline-block;
+    font-size: 0;
+    line-height: 0
+}
+
+#search-results {
+    padding: 5px;
+    border: 2px gold solid;
+}
+
+#table-consumers
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	margin-top: 5px;
+	text-align: left;
+}
+#table-consumers th
+{
+	font-size: 13px;
+	font-weight: normal;
+	padding: 8px;
+	background: #b9c9fe url('images/gradhead.png') repeat-x;
+	border-top: 2px solid #d3ddff;
+	border-bottom: 1px solid #fff;
+	color: #039;
+}
+#table-consumers td
+{
+	padding: 8px; 
+	border-bottom: 1px solid #fff;
+	color: #669;
+	border-top: 1px solid #fff;
+	background: #e8edff url('images/gradback.png') repeat-x;
+}
+#table-consumers tfoot tr td
+{
+	background: #e8edff;
+	font-size: 12px;
+	color: #99c;
+}
+#table-consumers tbody tr:hover td
+{
+	background: #d0dafd url('images/gradhover.png') repeat-x;
+	color: #339;
+}
+
+#footer {
+    padding: 5px;
+    text-align: center;
+}

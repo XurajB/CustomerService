@@ -1,0 +1,601 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CarmaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="CarmaModelStoreContainer">
+          <EntitySet Name="ConsumerDemographic" EntityType="CarmaModel.Store.ConsumerDemographic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConsumerLogInInfo" EntityType="CarmaModel.Store.ConsumerLogInInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConsumerOptIn" EntityType="CarmaModel.Store.ConsumerOptIn" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConsumerProduct" EntityType="CarmaModel.Store.ConsumerProduct" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConsumerPurchaseReason" EntityType="CarmaModel.Store.ConsumerPurchaseReason" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ConsumerTouchPointProfile" EntityType="CarmaModel.Store.ConsumerTouchPointProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PurchaseDynamic" EntityType="CarmaModel.Store.PurchaseDynamic" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ConsumerDemographic_ConsumerTouchPointProfile" Association="CarmaModel.Store.FK_ConsumerDemographic_ConsumerTouchPointProfile">
+            <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfile" />
+            <End Role="ConsumerDemographic" EntitySet="ConsumerDemographic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerLogInInfo_ConsumerTouchPointProfile" Association="CarmaModel.Store.FK_ConsumerLogInInfo_ConsumerTouchPointProfile">
+            <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfile" />
+            <End Role="ConsumerLogInInfo" EntitySet="ConsumerLogInInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerOptIn_ConsumerTouchPoint" Association="CarmaModel.Store.FK_ConsumerOptIn_ConsumerTouchPoint">
+            <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfile" />
+            <End Role="ConsumerOptIn" EntitySet="ConsumerOptIn" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerProduct_ConsumerTouchPointProfile" Association="CarmaModel.Store.FK_ConsumerProduct_ConsumerTouchPointProfile">
+            <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfile" />
+            <End Role="ConsumerProduct" EntitySet="ConsumerProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerPurchaseReason_PurchaseDynamic" Association="CarmaModel.Store.FK_ConsumerPurchaseReason_PurchaseDynamic">
+            <End Role="PurchaseDynamic" EntitySet="PurchaseDynamic" />
+            <End Role="ConsumerPurchaseReason" EntitySet="ConsumerPurchaseReason" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDynamic_ConsumerProduct" Association="CarmaModel.Store.FK_PurchaseDynamic_ConsumerProduct">
+            <End Role="ConsumerProduct" EntitySet="ConsumerProduct" />
+            <End Role="PurchaseDynamic" EntitySet="PurchaseDynamic" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ConsumerDemographic">
+          <Key>
+            <PropertyRef Name="ConsumerTouchPointID" />
+          </Key>
+          <Property Name="ConsumerTouchPointID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NameTitleID" Type="int" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="Street" Type="nvarchar" MaxLength="75" />
+          <Property Name="Street2_AptNo" Type="nvarchar" MaxLength="75" />
+          <Property Name="City" Type="nvarchar" MaxLength="75" />
+          <Property Name="StateSubDivisionID" Type="int" Nullable="false" />
+          <Property Name="PostCode" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneHome" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneMobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="PhoneWork" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaritalStatusID" Type="int" Nullable="false" />
+          <Property Name="IncomeLevelID" Type="int" Nullable="false" />
+          <Property Name="EducationID" Type="int" Nullable="false" />
+          <Property Name="CultureCode" Type="nvarchar" Nullable="false" MaxLength="5" />
+          <Property Name="YardSizeID" Type="int" Nullable="false" />
+          <Property Name="HomeOwnershipID" Type="int" Nullable="false" />
+          <Property Name="DateLastEdited" Type="datetime" />
+          <Property Name="GenderID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConsumerLogInInfo">
+          <Key>
+            <PropertyRef Name="ConsumerTouchPointID" />
+          </Key>
+          <Property Name="ConsumerTouchPointID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TouchPointID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="255" />
+          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="255" />
+          <Property Name="RecoveryQuestionID" Type="int" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" Nullable="false" />
+          <Property Name="NumberOfVisits" Type="int" Nullable="false" />
+          <Property Name="PageJoinedFrom" Type="nvarchar" MaxLength="255" />
+          <Property Name="SiteReferredFrom" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateLastLogin" Type="datetime" Nullable="false" />
+          <Property Name="DeWaltMemberID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Migrated" Type="bit" Nullable="false" />
+          <Property Name="pwdh" Type="nchar" MaxLength="70" />
+        </EntityType>
+        <EntityType Name="ConsumerOptIn">
+          <Key>
+            <PropertyRef Name="ConsumerTouchPointID" />
+            <PropertyRef Name="OptInID" />
+          </Key>
+          <Property Name="ConsumerTouchPointID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OptInID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="OptInStatus" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConsumerProduct">
+          <Key>
+            <PropertyRef Name="ConsumerProductID" />
+          </Key>
+          <Property Name="ConsumerProductID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ConsumerTouchPointID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="TouchPointID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ModelNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateWarrantyExpires" Type="datetime" />
+          <Property Name="ProductLocationID" Type="uniqueidentifier" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateEdited" Type="datetime" Nullable="false" />
+          <Property Name="LikelyToRecommendProduct" Type="int" />
+          <Property Name="LikelyToPurchaseBrand" Type="int" />
+        </EntityType>
+        <EntityType Name="ConsumerPurchaseReason">
+          <Key>
+            <PropertyRef Name="ConsumerProductID" />
+            <PropertyRef Name="PurchaseReasonID" />
+          </Key>
+          <Property Name="ConsumerProductID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PurchaseReasonID" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConsumerTouchPointProfile">
+          <Key>
+            <PropertyRef Name="ConsumerTouchPointID" />
+          </Key>
+          <Property Name="ConsumerTouchPointID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TouchPointID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MasterConsumerID" Type="uniqueidentifier" />
+          <Property Name="NameFirst" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="NameMiddle" Type="nvarchar" MaxLength="20" />
+          <Property Name="NameLast" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateLastEdited" Type="datetime" Nullable="false" />
+          <Property Name="EquifaxContactID" Type="int" />
+          <Property Name="NumberOfVisits" Type="int" Nullable="false" />
+          <Property Name="PageJoinedFrom" Type="nvarchar" MaxLength="255" />
+          <Property Name="SiteReferredFrom" Type="nvarchar" MaxLength="255" />
+          <Property Name="DeWaltMemberID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PurchaseDynamic">
+          <Key>
+            <PropertyRef Name="ConsumerProductID" />
+          </Key>
+          <Property Name="ConsumerProductID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OriginalDateOfPurchase" Type="datetime" />
+          <Property Name="PurchaseTypeID" Type="int" />
+          <Property Name="RetailerID" Type="uniqueidentifier" />
+          <Property Name="GiftTypeID" Type="int" />
+          <Property Name="IntendedUsageID" Type="int" />
+        </EntityType>
+        <Association Name="FK_ConsumerDemographic_ConsumerTouchPointProfile">
+          <End Role="ConsumerTouchPointProfile" Type="CarmaModel.Store.ConsumerTouchPointProfile" Multiplicity="1" />
+          <End Role="ConsumerDemographic" Type="CarmaModel.Store.ConsumerDemographic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerTouchPointProfile">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerDemographic">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerLogInInfo_ConsumerTouchPointProfile">
+          <End Role="ConsumerTouchPointProfile" Type="CarmaModel.Store.ConsumerTouchPointProfile" Multiplicity="1" />
+          <End Role="ConsumerLogInInfo" Type="CarmaModel.Store.ConsumerLogInInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerTouchPointProfile">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerLogInInfo">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerOptIn_ConsumerTouchPoint">
+          <End Role="ConsumerTouchPointProfile" Type="CarmaModel.Store.ConsumerTouchPointProfile" Multiplicity="1" />
+          <End Role="ConsumerOptIn" Type="CarmaModel.Store.ConsumerOptIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerTouchPointProfile">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerOptIn">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerProduct_ConsumerTouchPointProfile">
+          <End Role="ConsumerTouchPointProfile" Type="CarmaModel.Store.ConsumerTouchPointProfile" Multiplicity="1" />
+          <End Role="ConsumerProduct" Type="CarmaModel.Store.ConsumerProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerTouchPointProfile">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerProduct">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerPurchaseReason_PurchaseDynamic">
+          <End Role="PurchaseDynamic" Type="CarmaModel.Store.PurchaseDynamic" Multiplicity="1" />
+          <End Role="ConsumerPurchaseReason" Type="CarmaModel.Store.ConsumerPurchaseReason" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseDynamic">
+              <PropertyRef Name="ConsumerProductID" />
+            </Principal>
+            <Dependent Role="ConsumerPurchaseReason">
+              <PropertyRef Name="ConsumerProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDynamic_ConsumerProduct">
+          <End Role="ConsumerProduct" Type="CarmaModel.Store.ConsumerProduct" Multiplicity="1" />
+          <End Role="PurchaseDynamic" Type="CarmaModel.Store.PurchaseDynamic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerProduct">
+              <PropertyRef Name="ConsumerProductID" />
+            </Principal>
+            <Dependent Role="PurchaseDynamic">
+              <PropertyRef Name="ConsumerProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarmaModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CarmaEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ConsumerDemographics" EntityType="CarmaModel.ConsumerDemographic" />
+          <EntitySet Name="ConsumerLogInInfoes" EntityType="CarmaModel.ConsumerLogInInfo" />
+          <EntitySet Name="ConsumerOptIns" EntityType="CarmaModel.ConsumerOptIn" />
+          <EntitySet Name="ConsumerProducts" EntityType="CarmaModel.ConsumerProduct" />
+          <EntitySet Name="ConsumerPurchaseReasons" EntityType="CarmaModel.ConsumerPurchaseReason" />
+          <EntitySet Name="ConsumerTouchPointProfiles" EntityType="CarmaModel.ConsumerTouchPointProfile" />
+          <EntitySet Name="PurchaseDynamics" EntityType="CarmaModel.PurchaseDynamic" />
+          <AssociationSet Name="FK_ConsumerDemographic_ConsumerTouchPointProfile" Association="CarmaModel.FK_ConsumerDemographic_ConsumerTouchPointProfile">
+            <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfiles" />
+            <End Role="ConsumerDemographic" EntitySet="ConsumerDemographics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerLogInInfo_ConsumerTouchPointProfile" Association="CarmaModel.FK_ConsumerLogInInfo_ConsumerTouchPointProfile">
+            <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfiles" />
+            <End Role="ConsumerLogInInfo" EntitySet="ConsumerLogInInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerOptIn_ConsumerTouchPoint" Association="CarmaModel.FK_ConsumerOptIn_ConsumerTouchPoint">
+            <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfiles" />
+            <End Role="ConsumerOptIn" EntitySet="ConsumerOptIns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerProduct_ConsumerTouchPointProfile" Association="CarmaModel.FK_ConsumerProduct_ConsumerTouchPointProfile">
+            <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfiles" />
+            <End Role="ConsumerProduct" EntitySet="ConsumerProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PurchaseDynamic_ConsumerProduct" Association="CarmaModel.FK_PurchaseDynamic_ConsumerProduct">
+            <End Role="ConsumerProduct" EntitySet="ConsumerProducts" />
+            <End Role="PurchaseDynamic" EntitySet="PurchaseDynamics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerPurchaseReason_PurchaseDynamic" Association="CarmaModel.FK_ConsumerPurchaseReason_PurchaseDynamic">
+            <End Role="PurchaseDynamic" EntitySet="PurchaseDynamics" />
+            <End Role="ConsumerPurchaseReason" EntitySet="ConsumerPurchaseReasons" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ConsumerDemographic">
+          <Key>
+            <PropertyRef Name="ConsumerTouchPointID" />
+          </Key>
+          <Property Name="ConsumerTouchPointID" Type="Guid" Nullable="false" />
+          <Property Name="NameTitleID" Type="Int32" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="Street" Type="String" MaxLength="75" Unicode="true" FixedLength="false" />
+          <Property Name="Street2_AptNo" Type="String" MaxLength="75" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="75" Unicode="true" FixedLength="false" />
+          <Property Name="StateSubDivisionID" Type="Int32" Nullable="false" />
+          <Property Name="PostCode" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneHome" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneMobile" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneWork" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MaritalStatusID" Type="Int32" Nullable="false" />
+          <Property Name="IncomeLevelID" Type="Int32" Nullable="false" />
+          <Property Name="EducationID" Type="Int32" Nullable="false" />
+          <Property Name="CultureCode" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="false" />
+          <Property Name="YardSizeID" Type="Int32" Nullable="false" />
+          <Property Name="HomeOwnershipID" Type="Int32" Nullable="false" />
+          <Property Name="DateLastEdited" Type="DateTime" Precision="3" />
+          <Property Name="GenderID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ConsumerTouchPointProfile" Relationship="CarmaModel.FK_ConsumerDemographic_ConsumerTouchPointProfile" FromRole="ConsumerDemographic" ToRole="ConsumerTouchPointProfile" />
+        </EntityType>
+        <EntityType Name="ConsumerLogInInfo">
+          <Key>
+            <PropertyRef Name="ConsumerTouchPointID" />
+          </Key>
+          <Property Name="ConsumerTouchPointID" Type="Guid" Nullable="false" />
+          <Property Name="TouchPointID" Type="Guid" Nullable="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordQuestion" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordAnswer" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="RecoveryQuestionID" Type="Int32" Nullable="false" />
+          <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="NumberOfVisits" Type="Int32" Nullable="false" />
+          <Property Name="PageJoinedFrom" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="SiteReferredFrom" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DateLastLogin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DeWaltMemberID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Migrated" Type="Boolean" Nullable="false" />
+          <Property Name="pwdh" Type="String" MaxLength="70" Unicode="true" FixedLength="true" />
+          <NavigationProperty Name="ConsumerTouchPointProfile" Relationship="CarmaModel.FK_ConsumerLogInInfo_ConsumerTouchPointProfile" FromRole="ConsumerLogInInfo" ToRole="ConsumerTouchPointProfile" />
+        </EntityType>
+        <EntityType Name="ConsumerOptIn">
+          <Key>
+            <PropertyRef Name="ConsumerTouchPointID" />
+            <PropertyRef Name="OptInID" />
+          </Key>
+          <Property Name="ConsumerTouchPointID" Type="Guid" Nullable="false" />
+          <Property Name="OptInID" Type="Guid" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OptInStatus" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ConsumerTouchPointProfile" Relationship="CarmaModel.FK_ConsumerOptIn_ConsumerTouchPoint" FromRole="ConsumerOptIn" ToRole="ConsumerTouchPointProfile" />
+        </EntityType>
+        <EntityType Name="ConsumerProduct">
+          <Key>
+            <PropertyRef Name="ConsumerProductID" />
+          </Key>
+          <Property Name="ConsumerProductID" Type="Guid" Nullable="false" />
+          <Property Name="ConsumerTouchPointID" Type="Guid" Nullable="false" />
+          <Property Name="BrandID" Type="Int32" Nullable="false" />
+          <Property Name="TouchPointID" Type="Guid" Nullable="false" />
+          <Property Name="ModelNumber" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="SerialNumber" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DateWarrantyExpires" Type="DateTime" Precision="3" />
+          <Property Name="ProductLocationID" Type="Guid" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateEdited" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LikelyToRecommendProduct" Type="Int32" />
+          <Property Name="LikelyToPurchaseBrand" Type="Int32" />
+          <NavigationProperty Name="ConsumerTouchPointProfile" Relationship="CarmaModel.FK_ConsumerProduct_ConsumerTouchPointProfile" FromRole="ConsumerProduct" ToRole="ConsumerTouchPointProfile" />
+          <NavigationProperty Name="PurchaseDynamic" Relationship="CarmaModel.FK_PurchaseDynamic_ConsumerProduct" FromRole="ConsumerProduct" ToRole="PurchaseDynamic" />
+        </EntityType>
+        <EntityType Name="ConsumerPurchaseReason">
+          <Key>
+            <PropertyRef Name="ConsumerProductID" />
+            <PropertyRef Name="PurchaseReasonID" />
+          </Key>
+          <Property Name="ConsumerProductID" Type="Guid" Nullable="false" />
+          <Property Name="PurchaseReasonID" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PurchaseDynamic" Relationship="CarmaModel.FK_ConsumerPurchaseReason_PurchaseDynamic" FromRole="ConsumerPurchaseReason" ToRole="PurchaseDynamic" />
+        </EntityType>
+        <EntityType Name="ConsumerTouchPointProfile">
+          <Key>
+            <PropertyRef Name="ConsumerTouchPointID" />
+          </Key>
+          <Property Name="ConsumerTouchPointID" Type="Guid" Nullable="false" />
+          <Property Name="TouchPointID" Type="Guid" Nullable="false" />
+          <Property Name="MasterConsumerID" Type="Guid" />
+          <Property Name="NameFirst" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="NameMiddle" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="NameLast" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateLastEdited" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EquifaxContactID" Type="Int32" />
+          <Property Name="NumberOfVisits" Type="Int32" Nullable="false" />
+          <Property Name="PageJoinedFrom" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="SiteReferredFrom" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DeWaltMemberID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ConsumerDemographic" Relationship="CarmaModel.FK_ConsumerDemographic_ConsumerTouchPointProfile" FromRole="ConsumerTouchPointProfile" ToRole="ConsumerDemographic" />
+          <NavigationProperty Name="ConsumerLogInInfo" Relationship="CarmaModel.FK_ConsumerLogInInfo_ConsumerTouchPointProfile" FromRole="ConsumerTouchPointProfile" ToRole="ConsumerLogInInfo" />
+          <NavigationProperty Name="ConsumerOptIns" Relationship="CarmaModel.FK_ConsumerOptIn_ConsumerTouchPoint" FromRole="ConsumerTouchPointProfile" ToRole="ConsumerOptIn" />
+          <NavigationProperty Name="ConsumerProducts" Relationship="CarmaModel.FK_ConsumerProduct_ConsumerTouchPointProfile" FromRole="ConsumerTouchPointProfile" ToRole="ConsumerProduct" />
+        </EntityType>
+        <EntityType Name="PurchaseDynamic">
+          <Key>
+            <PropertyRef Name="ConsumerProductID" />
+          </Key>
+          <Property Name="ConsumerProductID" Type="Guid" Nullable="false" />
+          <Property Name="OriginalDateOfPurchase" Type="DateTime" Precision="3" />
+          <Property Name="PurchaseTypeID" Type="Int32" />
+          <Property Name="RetailerID" Type="Guid" />
+          <Property Name="GiftTypeID" Type="Int32" />
+          <Property Name="IntendedUsageID" Type="Int32" />
+          <NavigationProperty Name="ConsumerProduct" Relationship="CarmaModel.FK_PurchaseDynamic_ConsumerProduct" FromRole="PurchaseDynamic" ToRole="ConsumerProduct" />
+          <NavigationProperty Name="ConsumerPurchaseReasons" Relationship="CarmaModel.FK_ConsumerPurchaseReason_PurchaseDynamic" FromRole="PurchaseDynamic" ToRole="ConsumerPurchaseReason" />
+        </EntityType>
+        <Association Name="FK_ConsumerDemographic_ConsumerTouchPointProfile">
+          <End Role="ConsumerTouchPointProfile" Type="CarmaModel.ConsumerTouchPointProfile" Multiplicity="1" />
+          <End Role="ConsumerDemographic" Type="CarmaModel.ConsumerDemographic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerTouchPointProfile">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerDemographic">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerLogInInfo_ConsumerTouchPointProfile">
+          <End Role="ConsumerTouchPointProfile" Type="CarmaModel.ConsumerTouchPointProfile" Multiplicity="1" />
+          <End Role="ConsumerLogInInfo" Type="CarmaModel.ConsumerLogInInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerTouchPointProfile">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerLogInInfo">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerOptIn_ConsumerTouchPoint">
+          <End Role="ConsumerTouchPointProfile" Type="CarmaModel.ConsumerTouchPointProfile" Multiplicity="1" />
+          <End Role="ConsumerOptIn" Type="CarmaModel.ConsumerOptIn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerTouchPointProfile">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerOptIn">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerProduct_ConsumerTouchPointProfile">
+          <End Role="ConsumerTouchPointProfile" Type="CarmaModel.ConsumerTouchPointProfile" Multiplicity="1" />
+          <End Role="ConsumerProduct" Type="CarmaModel.ConsumerProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerTouchPointProfile">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerProduct">
+              <PropertyRef Name="ConsumerTouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PurchaseDynamic_ConsumerProduct">
+          <End Role="ConsumerProduct" Type="CarmaModel.ConsumerProduct" Multiplicity="1" />
+          <End Role="PurchaseDynamic" Type="CarmaModel.PurchaseDynamic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerProduct">
+              <PropertyRef Name="ConsumerProductID" />
+            </Principal>
+            <Dependent Role="PurchaseDynamic">
+              <PropertyRef Name="ConsumerProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerPurchaseReason_PurchaseDynamic">
+          <End Role="PurchaseDynamic" Type="CarmaModel.PurchaseDynamic" Multiplicity="1" />
+          <End Role="ConsumerPurchaseReason" Type="CarmaModel.ConsumerPurchaseReason" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PurchaseDynamic">
+              <PropertyRef Name="ConsumerProductID" />
+            </Principal>
+            <Dependent Role="ConsumerPurchaseReason">
+              <PropertyRef Name="ConsumerProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarmaModelStoreContainer" CdmEntityContainer="CarmaEntities">
+          <EntitySetMapping Name="ConsumerDemographics">
+            <EntityTypeMapping TypeName="CarmaModel.ConsumerDemographic">
+              <MappingFragment StoreEntitySet="ConsumerDemographic">
+                <ScalarProperty Name="ConsumerTouchPointID" ColumnName="ConsumerTouchPointID" />
+                <ScalarProperty Name="NameTitleID" ColumnName="NameTitleID" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Street2_AptNo" ColumnName="Street2_AptNo" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="StateSubDivisionID" ColumnName="StateSubDivisionID" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneHome" ColumnName="PhoneHome" />
+                <ScalarProperty Name="PhoneMobile" ColumnName="PhoneMobile" />
+                <ScalarProperty Name="PhoneWork" ColumnName="PhoneWork" />
+                <ScalarProperty Name="MaritalStatusID" ColumnName="MaritalStatusID" />
+                <ScalarProperty Name="IncomeLevelID" ColumnName="IncomeLevelID" />
+                <ScalarProperty Name="EducationID" ColumnName="EducationID" />
+                <ScalarProperty Name="CultureCode" ColumnName="CultureCode" />
+                <ScalarProperty Name="YardSizeID" ColumnName="YardSizeID" />
+                <ScalarProperty Name="HomeOwnershipID" ColumnName="HomeOwnershipID" />
+                <ScalarProperty Name="DateLastEdited" ColumnName="DateLastEdited" />
+                <ScalarProperty Name="GenderID" ColumnName="GenderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsumerLogInInfoes">
+            <EntityTypeMapping TypeName="CarmaModel.ConsumerLogInInfo">
+              <MappingFragment StoreEntitySet="ConsumerLogInInfo">
+                <ScalarProperty Name="ConsumerTouchPointID" ColumnName="ConsumerTouchPointID" />
+                <ScalarProperty Name="TouchPointID" ColumnName="TouchPointID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
+                <ScalarProperty Name="RecoveryQuestionID" ColumnName="RecoveryQuestionID" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="NumberOfVisits" ColumnName="NumberOfVisits" />
+                <ScalarProperty Name="PageJoinedFrom" ColumnName="PageJoinedFrom" />
+                <ScalarProperty Name="SiteReferredFrom" ColumnName="SiteReferredFrom" />
+                <ScalarProperty Name="DateLastLogin" ColumnName="DateLastLogin" />
+                <ScalarProperty Name="DeWaltMemberID" ColumnName="DeWaltMemberID" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Migrated" ColumnName="Migrated" />
+                <ScalarProperty Name="pwdh" ColumnName="pwdh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsumerOptIns">
+            <EntityTypeMapping TypeName="CarmaModel.ConsumerOptIn">
+              <MappingFragment StoreEntitySet="ConsumerOptIn">
+                <ScalarProperty Name="ConsumerTouchPointID" ColumnName="ConsumerTouchPointID" />
+                <ScalarProperty Name="OptInID" ColumnName="OptInID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="OptInStatus" ColumnName="OptInStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsumerProducts">
+            <EntityTypeMapping TypeName="CarmaModel.ConsumerProduct">
+              <MappingFragment StoreEntitySet="ConsumerProduct">
+                <ScalarProperty Name="ConsumerProductID" ColumnName="ConsumerProductID" />
+                <ScalarProperty Name="ConsumerTouchPointID" ColumnName="ConsumerTouchPointID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="TouchPointID" ColumnName="TouchPointID" />
+                <ScalarProperty Name="ModelNumber" ColumnName="ModelNumber" />
+                <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+                <ScalarProperty Name="DateWarrantyExpires" ColumnName="DateWarrantyExpires" />
+                <ScalarProperty Name="ProductLocationID" ColumnName="ProductLocationID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateEdited" ColumnName="DateEdited" />
+                <ScalarProperty Name="LikelyToRecommendProduct" ColumnName="LikelyToRecommendProduct" />
+                <ScalarProperty Name="LikelyToPurchaseBrand" ColumnName="LikelyToPurchaseBrand" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsumerPurchaseReasons">
+            <EntityTypeMapping TypeName="CarmaModel.ConsumerPurchaseReason">
+              <MappingFragment StoreEntitySet="ConsumerPurchaseReason">
+                <ScalarProperty Name="ConsumerProductID" ColumnName="ConsumerProductID" />
+                <ScalarProperty Name="PurchaseReasonID" ColumnName="PurchaseReasonID" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConsumerTouchPointProfiles">
+            <EntityTypeMapping TypeName="CarmaModel.ConsumerTouchPointProfile">
+              <MappingFragment StoreEntitySet="ConsumerTouchPointProfile">
+                <ScalarProperty Name="ConsumerTouchPointID" ColumnName="ConsumerTouchPointID" />
+                <ScalarProperty Name="TouchPointID" ColumnName="TouchPointID" />
+                <ScalarProperty Name="MasterConsumerID" ColumnName="MasterConsumerID" />
+                <ScalarProperty Name="NameFirst" ColumnName="NameFirst" />
+                <ScalarProperty Name="NameMiddle" ColumnName="NameMiddle" />
+                <ScalarProperty Name="NameLast" ColumnName="NameLast" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="DateLastEdited" ColumnName="DateLastEdited" />
+                <ScalarProperty Name="EquifaxContactID" ColumnName="EquifaxContactID" />
+                <ScalarProperty Name="NumberOfVisits" ColumnName="NumberOfVisits" />
+                <ScalarProperty Name="PageJoinedFrom" ColumnName="PageJoinedFrom" />
+                <ScalarProperty Name="SiteReferredFrom" ColumnName="SiteReferredFrom" />
+                <ScalarProperty Name="DeWaltMemberID" ColumnName="DeWaltMemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PurchaseDynamics">
+            <EntityTypeMapping TypeName="CarmaModel.PurchaseDynamic">
+              <MappingFragment StoreEntitySet="PurchaseDynamic">
+                <ScalarProperty Name="ConsumerProductID" ColumnName="ConsumerProductID" />
+                <ScalarProperty Name="OriginalDateOfPurchase" ColumnName="OriginalDateOfPurchase" />
+                <ScalarProperty Name="PurchaseTypeID" ColumnName="PurchaseTypeID" />
+                <ScalarProperty Name="RetailerID" ColumnName="RetailerID" />
+                <ScalarProperty Name="GiftTypeID" ColumnName="GiftTypeID" />
+                <ScalarProperty Name="IntendedUsageID" ColumnName="IntendedUsageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

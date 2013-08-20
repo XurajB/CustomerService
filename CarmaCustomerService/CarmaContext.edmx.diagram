@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7e68c8eefc44448892a4c7ca9362f82f" Name="Diagram1">
+        <EntityTypeShape EntityType="CarmaModel.ConsumerDemographic" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarmaModel.ConsumerLogInInfo" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarmaModel.ConsumerOptIn" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarmaModel.ConsumerProduct" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarmaModel.ConsumerPurchaseReason" Width="1.5" PointX="7.5" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarmaModel.ConsumerTouchPointProfile" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CarmaModel.PurchaseDynamic" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />
+        <AssociationConnector Association="CarmaModel.FK_ConsumerDemographic_ConsumerTouchPointProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="CarmaModel.FK_ConsumerLogInInfo_ConsumerTouchPointProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="CarmaModel.FK_ConsumerOptIn_ConsumerTouchPoint" ManuallyRouted="false" />
+        <AssociationConnector Association="CarmaModel.FK_ConsumerProduct_ConsumerTouchPointProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="CarmaModel.FK_PurchaseDynamic_ConsumerProduct" ManuallyRouted="false" />
+        <AssociationConnector Association="CarmaModel.FK_ConsumerPurchaseReason_PurchaseDynamic" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
