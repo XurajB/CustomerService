@@ -1,4 +1,4 @@
-﻿// Default code generation is disabled for model 'c:\users\sxb0202\documents\visual studio 2012\Projects\CarmaCustomerService\CarmaCustomerService\CarmaContext.edmx'. 
+﻿// Default code generation is disabled for model 'C:\Users\sxb0202\Documents\GitHub\CustomerService\CarmaCustomerService\CarmaContext.edmx'. 
 // To enable default code generation, change the value of the 'Code Generation Strategy' designer
 // property to an alternate value. This property is available in the Properties Window when the model is
 // open in the designer.

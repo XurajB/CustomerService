@@ -1,0 +1,118 @@
+﻿@model CarmaCustomerService.ConsumerLogInInfo
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Consumer Demographics</h2>
+@using (Html.BeginForm(new { @id = "editconsumer" }))
+{
+    @Html.AntiForgeryToken()
+    
+    
+    <fieldset>
+
+
+        @Html.HiddenFor(model => model.ConsumerTouchPointID)
+        @Html.HiddenFor(model => Model.TouchPointID)
+
+        <div id="view-details">
+            <div id="leftside">
+                <div class="editor-label">
+                    Email*
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.UserID)
+                    @Html.ValidationMessageFor(model => model.UserID)
+                </div>
+
+                <div class="editor-label">
+                    Last Name*
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ConsumerTouchPointProfile.NameLast)
+                    @Html.ValidationMessageFor(model => model.ConsumerTouchPointProfile.NameLast)
+                </div>
+
+                <div class="editor-label">
+                    First Name*
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ConsumerTouchPointProfile.NameFirst)
+                    @Html.ValidationMessageFor(model => model.ConsumerTouchPointProfile.NameFirst)
+                </div>
+
+                <div class="editor-label">
+                    Address
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ConsumerTouchPointProfile.ConsumerDemographic.Street)
+                    @Html.ValidationMessageFor(model => model.ConsumerTouchPointProfile.ConsumerDemographic.Street)
+                </div>
+            </div>
+
+            <div id="rightside">
+                <div class="editor-label">
+                    City
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ConsumerTouchPointProfile.ConsumerDemographic.City)
+                    @Html.ValidationMessageFor(model => model.ConsumerTouchPointProfile.ConsumerDemographic.City)
+                </div>
+
+                <div class="editor-label">
+                    Postal Code
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ConsumerTouchPointProfile.ConsumerDemographic.PostCode)
+                    @Html.ValidationMessageFor(model => model.ConsumerTouchPointProfile.ConsumerDemographic.PostCode)
+                </div>
+
+                <div class="editor-label">
+                    Home Phone
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ConsumerTouchPointProfile.ConsumerDemographic.PhoneHome)
+                    @Html.ValidationMessageFor(model => model.ConsumerTouchPointProfile.ConsumerDemographic.PhoneHome)
+                </div>
+
+                <div class="editor-label">
+                    Display Name*
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.DisplayName)
+                    @Html.ValidationMessageFor(model => model.DisplayName)
+                </div>
+
+            </div>
+            
+            <div id="validationarea">
+                <p>
+                    Messages
+                </p>
+                <hr style="margin-top: -1px;"/>
+                <br/>
+                @Html.ValidationSummary(true)
+                
+                @{
+                    if (ViewBag.successEditUser==true)
+                    {
+                        @: <div id="success"> User Information Successfully Saved!</div>
+                        @Html.ActionLink("Go Back", "View", "Consumer", new { id = Model.ConsumerTouchPointID }, null)
+                    }
+
+                }
+
+            </div>
+
+            <br />
+            <br />
+            <p style="clear: both">
+                <input type="submit" value="Save" />
+                <input type="button" value="Back" onclick="javascript: history.go(-1); return false;">
+            </p>
+        </div>
+    </fieldset>
+            
+}

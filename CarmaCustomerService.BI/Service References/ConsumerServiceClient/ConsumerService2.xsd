@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://carma.bdk.com/Services/Consumer" elementFormDefault="qualified" targetNamespace="http://carma.bdk.com/Services/Consumer" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://carmaws.wwpti.com:8000/ConsumerService.svc?xsd=xsd2" namespace="http://carma.bdk.com/Services/Core/Types" />
+  <xs:import schemaLocation="http://carmaws.wwpti.com:8000/ConsumerService.svc?xsd=xsd3" namespace="http://carma.bdk.com/Services/Consumer/Types" />
+  <xs:import schemaLocation="http://carmaws.wwpti.com:8000/ConsumerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:element name="MemberLoginRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserPassword" nillable="true" type="xs:string" />
+        <xs:element xmlns:q1="http://carma.bdk.com/Services/Core/Types" minOccurs="0" name="Website" type="q1:Websites" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MemberLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberLoginDetail" nillable="true" type="q2:MemberLoginDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConsumerTouchpointProfileRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q3:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConsumerTouchpointProfileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="ConsumerTouchPointProfile" nillable="true" type="q4:ConsumerTouchPointProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendPasswordRecoveryEmailRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+        <xs:element xmlns:q5="http://carma.bdk.com/Services/Core/Types" minOccurs="0" name="Website" type="q5:Websites" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPasswordRecoveryQuestionRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element xmlns:q6="http://carma.bdk.com/Services/Core/Types" minOccurs="0" name="Website" type="q6:Websites" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPasswordRecoveryQuestionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RecoveryQuestion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginWithRecoveryQuestionRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UserRecoveryAnswer" nillable="true" type="xs:string" />
+        <xs:element xmlns:q7="http://carma.bdk.com/Services/Core/Types" minOccurs="0" name="Website" type="q7:Websites" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginWithRecoveryQuestionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberLoginDetail" nillable="true" type="q8:MemberLoginDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPasswordRecoveryQuestionIDRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q9:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPasswordRecoveryQuestionIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RecoveryQuestionID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateMemberAccountRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberAccount" nillable="true" type="q10:MemberAccount" />
+        <xs:element xmlns:q11="http://carma.bdk.com/Services/Core/Types" minOccurs="0" name="Website" type="q11:Websites" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateMemberAccountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q12:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditMemberAccountRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberAccount" nillable="true" type="q13:MemberAccount" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberAccountRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q14:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberAccountResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberAccount" nillable="true" type="q15:MemberAccount" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateMemberProfileRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberProfile" nillable="true" type="q16:MemberProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditMemberProfileRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberProfile" nillable="true" type="q17:MemberProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberProfileRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q18:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberProfileResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberProfile" nillable="true" type="q19:MemberProfile" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateMemberOptInsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q20:guid" />
+        <xs:element xmlns:q21="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="OptInID" type="q21:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditMemberOptInsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q22="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q22:guid" />
+        <xs:element xmlns:q23="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberOptInList" nillable="true" type="q23:MemberOptInList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberOptInsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q24:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberOptInsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q25="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberOptInList" nillable="true" type="q25:MemberOptInList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberOptInDetailsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q26:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberOptInDetailsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberOptInDetailList" nillable="true" type="q27:MemberOptInDetailList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStateSubDivisionsRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q28="http://carma.bdk.com/Services/Core/Types" minOccurs="0" name="Country" type="q28:Countries" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetStateSubDivisionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="StateSubDivisionList" nillable="true" type="q29:StateSubDivisionList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EditMemberSegmentationRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q30="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberSegmentation" nillable="true" type="q30:MemberSegmentation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberSegmentationRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q31:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberSegmentationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberSegmentation" nillable="true" type="q32:MemberSegmentation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddRequestATradeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Trade" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EnterSweepstakesRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q33:guid" />
+        <xs:element xmlns:q34="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="SweepstakesID" type="q34:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuickOptInRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NameFirst" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NameLast" nillable="true" type="xs:string" />
+        <xs:element xmlns:q35="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="OptInID" type="q35:guid" />
+        <xs:element xmlns:q36="http://carma.bdk.com/Services/Core/Types" minOccurs="0" name="Website" type="q36:Websites" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsAvailableDisplayNameRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q37="http://carma.bdk.com/Services/Core/Types" minOccurs="0" name="Website" type="q37:Websites" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="IsAvailableDisplayNameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="IsAvailable" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateMemberProfileNoLoginRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q38="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberProfileNoLogin" nillable="true" type="q38:MemberProfileNoLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateMemberProfileNoLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q39:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertMemberProfileSkillLevelRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberProfileSkillLevelEntry" nillable="true" type="q40:MemberProfileSkillLevelEntry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertMemberProfileTradeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberProfileTradeEntry" nillable="true" type="q41:MemberProfileTradeEntry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertMemberProfileTradeOtherRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q42="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberProfileOtherTradeEntry" nillable="true" type="q42:MemberProfileOtherTradeEntry" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberProfileNoLoginRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q43:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemebrProfileNoLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberProfileNoLogin" nillable="true" type="q44:MemberProfileNoLogin" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element xmlns:q45="http://schemas.microsoft.com/2003/10/Serialization/" name="ConsumerTouchPointID" type="q45:guid" />
+  <xs:element xmlns:q46="http://carma.bdk.com/Services/Consumer/Types" name="MemberProfileSkillLevelList" nillable="true" type="q46:MemberProfileSkillLevelList" />
+  <xs:element name="SkillID" type="xs:int" />
+  <xs:element name="SkillName" nillable="true" type="xs:string" />
+  <xs:element name="GetMemberProfileTradeRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="ConsumerTouchPointID" type="q47:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetMemberProfileTradeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://carma.bdk.com/Services/Consumer/Types" minOccurs="0" name="MemberProfileTradeList" nillable="true" type="q48:MemberProfileTradeList" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeNameByIDRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="TradeID" type="q49:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTradeNameByIDResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TradeName" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QuickOptInByTouchPointIDRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NameFirst" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NameLast" nillable="true" type="xs:string" />
+        <xs:element xmlns:q50="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="OptInID" type="q50:guid" />
+        <xs:element xmlns:q51="http://schemas.microsoft.com/2003/10/Serialization/" minOccurs="0" name="TouchPointID" type="q51:guid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

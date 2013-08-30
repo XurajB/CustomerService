@@ -13,21 +13,8 @@ namespace CarmaCustomerService.Controllers
         public ActionResult Index()
         {
 
-            var items = new List<SelectListItem>
-                {
-                    new SelectListItem {Text = "DeWalt", Value = "0"},
-                    new SelectListItem {Text = "Black and Decker", Value = "1"},
-                    new SelectListItem {Text = "Porter Cable", Value = "2"},
-                };
-            var searchFilter = new List<SelectListItem>
-                {
-                    new SelectListItem {Text = "Email", Value = "0"},
-                    new SelectListItem {Text = "First Name", Value = "1"},
-                    new SelectListItem {Text = "Last Name", Value = "2"},
-                };
-            ViewBag.searchType = searchFilter;
-            ViewBag.brands = items;
-            return View(db.ConsumerLogInInfoes.Take(20));
+            LoadSpinners();
+            return View(db.ConsumerLogInInfoes.Take(50));
         }
 
         [HttpGet, ActionName("Search")]
@@ -40,10 +27,10 @@ namespace CarmaCustomerService.Controllers
             var touchpointBdp = new Guid("7CACAE47-8274-4C00-B111-AFA49F261902");
 
             IEnumerable<ConsumerLogInInfo> consumerLogInInfos = null;
-            System.Threading.Thread.Sleep(1000);
+            //System.Threading.Thread.Sleep(1000);
             if (searchText == string.Empty)
             {
-                consumerLogInInfos = db.ConsumerLogInInfoes.Take(20);
+                consumerLogInInfos = db.ConsumerLogInInfoes.Take(50);
             }
             else
             {
@@ -59,7 +46,7 @@ namespace CarmaCustomerService.Controllers
                     case 2:
                         touchpointId = touchpointPc;
                         break;
-                    case 3:
+                    case 4:
                         touchpointId = touchpointBdp;
                         break;
 
@@ -67,20 +54,39 @@ namespace CarmaCustomerService.Controllers
                 switch (searchType)
                 {
                     case 0:
-                        consumerLogInInfos = db.ConsumerLogInInfoes.Where(x => x.UserID.Contains(searchText) && x.TouchPointID.Equals(touchpointId));
+                        consumerLogInInfos = brands==3 ? db.ConsumerLogInInfoes.Where(x => x.UserID.Contains(searchText)) : db.ConsumerLogInInfoes.Where(x => x.UserID.Contains(searchText) && x.TouchPointID.Equals(touchpointId));
                         break;
                     case 1:
-                        consumerLogInInfos = db.ConsumerLogInInfoes.Where(x => x.ConsumerTouchPointProfile.NameFirst.Contains(searchText) && x.TouchPointID.Equals(touchpointId));
+                        consumerLogInInfos = brands==3 ? db.ConsumerLogInInfoes.Where(x => x.ConsumerTouchPointProfile.NameFirst.Contains(searchText)) : db.ConsumerLogInInfoes.Where(x => x.ConsumerTouchPointProfile.NameFirst.Contains(searchText) && x.TouchPointID.Equals(touchpointId));
                         break;
                     case 2:
-                        consumerLogInInfos = db.ConsumerLogInInfoes.Where(x => x.ConsumerTouchPointProfile.NameLast.Contains(searchText) && x.TouchPointID.Equals(touchpointId));
+                        consumerLogInInfos = brands==3 ? db.ConsumerLogInInfoes.Where(x => x.ConsumerTouchPointProfile.NameLast.Contains(searchText)) : db.ConsumerLogInInfoes.Where(x => x.ConsumerTouchPointProfile.NameLast.Contains(searchText) && x.TouchPointID.Equals(touchpointId));
                         break;
                 }
 
             }
 
+            LoadSpinners();
+
+            return View("Index", consumerLogInInfos);
+        }
+
+        [HttpGet]
+        public ActionResult View(Guid? id)
+        {
+            ConsumerLogInInfo consumerLogInInfo =
+                db.ConsumerLogInInfoes.FirstOrDefault(a => a.ConsumerTouchPointID == id);
+
+            LoadSpinners();
+
+            return View(consumerLogInInfo);
+        }
+
+        public void LoadSpinners()
+        {
             var items = new List<SelectListItem>
                 {
+                    new SelectListItem {Text = "All Brands", Value = "3"},
                     new SelectListItem {Text = "DeWalt", Value = "0"},
                     new SelectListItem {Text = "Black and Decker", Value = "1"},
                     new SelectListItem {Text = "Porter Cable", Value = "2"},
@@ -93,8 +99,6 @@ namespace CarmaCustomerService.Controllers
                 };
             ViewBag.searchType = searchFilter;
             ViewBag.brands = items;
-
-            return View("Index", consumerLogInInfos);
         }
 
     }

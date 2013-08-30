@@ -14,6 +14,11 @@ namespace CarmaCustomerService
     
     public partial class ConsumerProduct
     {
+        public ConsumerProduct()
+        {
+            this.ProductSatisfactions = new HashSet<ProductSatisfaction>();
+        }
+    
         public System.Guid ConsumerProductID { get; set; }
         public System.Guid ConsumerTouchPointID { get; set; }
         public int BrandID { get; set; }
@@ -29,5 +34,8 @@ namespace CarmaCustomerService
     
         public virtual ConsumerTouchPointProfile ConsumerTouchPointProfile { get; set; }
         public virtual PurchaseDynamic PurchaseDynamic { get; set; }
+        public virtual TouchPoint TouchPoint { get; set; }
+        public virtual ICollection<ProductSatisfaction> ProductSatisfactions { get; set; }
+        public virtual ProductSatisfactionOld ProductSatisfactionOld { get; set; }
     }
 }

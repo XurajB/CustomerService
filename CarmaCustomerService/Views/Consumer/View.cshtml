@@ -1,0 +1,181 @@
+﻿@using CarmaCustomerService.BI
+@model CarmaCustomerService.ConsumerLogInInfo
+
+@{
+    ViewBag.Title = "ViewConsumer";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="view-details">
+
+    <h1>Consumer Details</h1>
+    <hr/>
+    Consumer Email/ID: <b>@Model.UserID</b>
+    <br />
+    Brand Touchpoint: <b>@Model.TouchPoint.TouchPointNameLong</b>
+    <br />
+    Site Referred From: <b>@Model.SiteReferredFrom</b>
+    <br />
+    <br />
+    Last Login: <b>@Model.DateLastLogin</b>
+    <br />
+    Security Question: <b>@Model.RecoveryQuestion.RecoveryQuestionText</b><br />
+    Security Answer: <b>@Model.PasswordAnswer</b>
+
+    <br/>
+
+    <h3>Consumer Demographics</h3>
+    <hr />
+    <table id="mytable" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>Email/UserID</th>
+                <th>Address1</th>
+                <th>City</th>
+                <th>Postal Code</th>
+                <th>Home Phone</th>
+                <th>Display Name</th>
+                <th>Date Created</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(modelItem => Model.ConsumerTouchPointProfile.NameLast)</td>
+                <td>@Html.DisplayFor(modelItem => Model.ConsumerTouchPointProfile.NameFirst)</td>
+                <td>@Html.DisplayFor(modelItem => Model.UserID)</td>
+                <td>@Html.DisplayFor(modelItem => Model.ConsumerTouchPointProfile.ConsumerDemographic.Street)</td>
+                <td>@Html.DisplayFor(modelItem => Model.ConsumerTouchPointProfile.ConsumerDemographic.City)</td>
+                <td>@Html.DisplayFor(modelItem => Model.ConsumerTouchPointProfile.ConsumerDemographic.PostCode)</td>
+                <td>@Html.DisplayFor(modelItem => Model.ConsumerTouchPointProfile.ConsumerDemographic.PhoneHome)</td>
+                <td>@Html.DisplayFor(modelItem => Model.DisplayName)</td>
+                <td>@Html.DisplayFor(modelItem => Model.ConsumerTouchPointProfile.DateCreated)</td>
+                <td>@Html.ActionLink("Edit", "Edit", "Consumer", new { id = Model.ConsumerTouchPointID }, null) </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Registered Products</h3>
+    <hr />
+    <table id="mytable" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Model Number</th>
+                <th>Serial Number</th>
+                <th>Date Purchased</th>
+                <th>Date Registered</th>
+                <th>Warranty Expiration</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in @Model.ConsumerTouchPointProfile.ConsumerProducts)
+            {
+                var message = String.Format("return confirm('Delete registered product: {0}?');", @product.ModelNumber);
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => product.ModelNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => product.SerialNumber)</td>
+                    <td>@Html.DisplayFor(modelItem => product.PurchaseDynamic.OriginalDateOfPurchase)</td>
+                    <td>@Html.DisplayFor(modelItem => product.DateCreated)</td>
+                    <td>@Html.DisplayFor(modelItem => product.DateWarrantyExpires)</td>
+                    <td>@using (Html.BeginForm("DeleteProduct", "Consumer", routeValues: new { id = product.ConsumerProductID }, method: FormMethod.Post))
+                        {
+                        @Html.AntiForgeryToken()
+                        @Html.ActionLink("Edit", "EditProduct", "Consumer", new { id = product.ConsumerProductID }, null) @: |
+                        <input type="submit" value="Delete" onclick="@message" /> 
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Email Subscriptions</h3>
+    <hr />
+    <table id="mytable" class="tablesorter">
+        <thead>
+            <tr>
+                <th>Listrak List</th>
+                <th>List ID</th>
+                <th>Status</th>
+                <th>Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{ var subscriberLists = LisTrakService.GetSubscriberList(Model.UserID, 0);
+                var nullcount = 0; }
+            @foreach (var lisTrakList in subscriberLists)
+            {
+                if (lisTrakList == null)
+                {
+                    nullcount++;
+                    continue;
+                }
+                lisTrakList.ConsumerTouchPointId = Model.ConsumerTouchPointID;
+                var message = String.Format("return confirm('Unsubscribe {0},{1} from mailing list {2}?');", Model.ConsumerTouchPointProfile.NameLast, Model.ConsumerTouchPointProfile.NameFirst, lisTrakList.ListName);
+                <tr>
+                    <td>@lisTrakList.ListName</td>
+                    <td>@lisTrakList.ListId</td>
+                    <td>Subscribed</td>
+
+                    <td>@using (Html.BeginForm("RemoveSubscription", "Consumer", routeValues: new { id = lisTrakList.ListId, consumer = Model.ConsumerTouchPointID, email = Model.UserID }, method: FormMethod.Post))
+                        {
+                          
+                            <input type="submit" value="Unsubscribe" onclick="@message" /> 
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Admin</h3>
+    <hr />
+    <table>
+        <tr>
+            <td>@using (Html.BeginForm("ResetPassword", "Consumer", routeValues: new { id = Model.ConsumerTouchPointID }, method: FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    var message = String.Format("return confirm('Send password recovery email for user {0},{1}?');", Model.ConsumerTouchPointProfile.NameLast, Model.ConsumerTouchPointProfile.NameFirst);
+                    <input type="submit" value="Reset Password" onclick="@message" /> 
+                    
+                }</td>
+            
+            <td>@using (Html.BeginForm("UnsubscribeFromAll", "Consumer", routeValues: new { id = Model.ConsumerTouchPointID }, method: FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    var message = String.Format("return confirm('Unsubscribe consumer {0},{1} from all mailing lists?');", Model.ConsumerTouchPointProfile.NameLast, Model.ConsumerTouchPointProfile.NameFirst);
+
+                    if (nullcount == 7)
+                    {
+                        <input type="submit" value="Unsubscribe All" onclick="@message" disabled="disabled" /> 
+                    }
+                    else
+                    {
+                        <input type="submit" value="Unsubscribe All" onclick="@message" /> 
+                    }
+                }</td>
+            
+            <td>@using (Html.BeginForm("DeleteConsumer", "Consumer", routeValues: new { id = @Model.ConsumerTouchPointID }, method: FormMethod.Post))
+                {
+                @Html.AntiForgeryToken()
+                    var message = String.Format("return confirm('Delete consumer {0},{1} from database?');", Model.ConsumerTouchPointProfile.NameLast, Model.ConsumerTouchPointProfile.NameFirst);
+                <input type="submit" value="Delete Account" onclick="@message" /> 
+                }</td>
+        </tr>
+    </table>
+    <hr />
+</div>
+<script defer="defer">
+    $(document).ready(function () {
+
+        if ($("#mytable tbody tr").length > 0) {
+            $("#mytable")
+                .tablesorter({ widthFixed: true, widgets: ['zebra'], sortList: [[0, 0]] });
+        }
+    }
+    );
+</script>
+

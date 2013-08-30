@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://carma.bdk.com/Services/Consumer/Types" elementFormDefault="qualified" targetNamespace="http://carma.bdk.com/Services/Consumer/Types" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://carmaws.wwpti.com:8000/ConsumerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="MemberLoginDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsumerTouchpointID" type="ser:guid" />
+      <xs:element minOccurs="0" name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameFirst" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameMiddle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameLast" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateCreated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateLastEdited" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberLoginDetail" nillable="true" type="tns:MemberLoginDetail" />
+  <xs:complexType name="ConsumerTouchPointProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsumerTouchPointID" type="ser:guid" />
+      <xs:element minOccurs="0" name="TouchPointID" type="ser:guid" />
+      <xs:element minOccurs="0" name="MasterConsumerID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="NameFirst" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameMiddle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameLast" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateCreated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateLastEdited" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EquifaxContactID" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConsumerTouchPointProfile" nillable="true" type="tns:ConsumerTouchPointProfile" />
+  <xs:complexType name="MemberAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsumerTouchPointID" type="ser:guid" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element name="UserID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RecoveryQuestionID" type="xs:int" />
+      <xs:element minOccurs="0" name="RecoveryAnswer" nillable="true" type="xs:string" />
+      <xs:element name="CultureCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberAccount" nillable="true" type="tns:MemberAccount" />
+  <xs:complexType name="MemberProfile">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsumerTouchPointID" type="ser:guid" />
+      <xs:element minOccurs="0" name="CultureCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameTitleID" type="xs:int" />
+      <xs:element minOccurs="0" name="NameFirst" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameMiddle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameLast" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateSubdivisionID" type="xs:int" />
+      <xs:element minOccurs="0" name="CountryID" type="xs:int" />
+      <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HomePhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobilePhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="HomeOwnershipID" type="xs:int" />
+      <xs:element minOccurs="0" name="HomeOwnershipName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryTradeID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="PrimaryTradeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryTradeOther" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryConstructionTradeID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="PrimaryConstructionTradeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryConstructionTradeOther" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SkillLevelID" type="xs:int" />
+      <xs:element minOccurs="0" name="SkillLevelName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberProfile" nillable="true" type="tns:MemberProfile" />
+  <xs:complexType name="MemberOptInList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MemberOptInList" nillable="true" type="tns:MemberOptIn" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberOptInList" nillable="true" type="tns:MemberOptInList" />
+  <xs:complexType name="MemberOptIn">
+    <xs:sequence>
+      <xs:element name="OptInID" type="ser:guid" />
+      <xs:element name="IsEnabled" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberOptIn" nillable="true" type="tns:MemberOptIn" />
+  <xs:complexType name="MemberOptInDetailList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MemberOptInDetailList" nillable="true" type="tns:MemberOptInDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberOptInDetailList" nillable="true" type="tns:MemberOptInDetailList" />
+  <xs:complexType name="MemberOptInDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OptInID" type="ser:guid" />
+      <xs:element minOccurs="0" name="OptInName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsEnabled" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberOptInDetail" nillable="true" type="tns:MemberOptInDetail" />
+  <xs:complexType name="StateSubDivisionList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StateSubDivisionList" nillable="true" type="tns:StateSubDivision" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StateSubDivisionList" nillable="true" type="tns:StateSubDivisionList" />
+  <xs:complexType name="StateSubDivision">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="StateSubDivisionID" type="xs:int" />
+      <xs:element minOccurs="0" name="StateSubDivisionFullName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StateSubDivision" nillable="true" type="tns:StateSubDivision" />
+  <xs:complexType name="MemberSegmentation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsumerTouchPointID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ProPTEarlyAdopterLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProPTBrandImpressionLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProPTFamiliarityLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProPTHowUseLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProPTQualityLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProPTPriceLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProPTResearchLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProPTValueLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PTBrandImpressionLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PTHowUseLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PTEnjoymentLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PTNecessaryLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PTEarlyAdopterLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PTNewProjectsLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="PTWorryLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ODPayMoreLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ODBrandIndifferenceLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ODEscapeLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ODLawnCareLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ODHassleLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ODGasWorryLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ODPowerfulLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HPPackageInfluenceLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HPPayForQualityLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HPLowestPriceLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HPEnjoymentLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HPHomePrideLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HPCleanFrequencyLevel" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="HPCleanWorryLevel" nillable="true" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberSegmentation" nillable="true" type="tns:MemberSegmentation" />
+  <xs:complexType name="MemberProfileNoLogin">
+    <xs:sequence>
+      <xs:element name="ConsumerTouchPointID" type="ser:guid" />
+      <xs:element name="TouchPointID" type="ser:guid" />
+      <xs:element name="NameFirst" nillable="true" type="xs:string" />
+      <xs:element name="NameLast" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateCreated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateLastEdited" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="NameTitleID" type="xs:int" />
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street2_AptNo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateSubDivisionID" type="xs:int" />
+      <xs:element minOccurs="0" name="PostCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneHome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneMobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneWork" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="IncomeLevelID" type="xs:int" />
+      <xs:element minOccurs="0" name="EducationID" type="xs:int" />
+      <xs:element name="CultureCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="YardSizeID" type="xs:int" />
+      <xs:element minOccurs="0" name="HomeOwnershipID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberProfileNoLogin" nillable="true" type="tns:MemberProfileNoLogin" />
+  <xs:complexType name="MemberProfileSkillLevelEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsumerTouchPointID" type="ser:guid" />
+      <xs:element minOccurs="0" name="SkillLevelID" type="xs:int" />
+      <xs:element minOccurs="0" name="DateCreated" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberProfileSkillLevelEntry" nillable="true" type="tns:MemberProfileSkillLevelEntry" />
+  <xs:complexType name="MemberProfileTradeEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FirmographicID" type="ser:guid" />
+      <xs:element minOccurs="0" name="ConsumerTouchPointID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="CompanyName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CompanySizeID" type="xs:int" />
+      <xs:element minOccurs="0" name="MostRecentTradeID" nillable="true" type="ser:guid" />
+      <xs:element minOccurs="0" name="DateCreated" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DateLastEdited" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PrimaryConstructionTradeID" nillable="true" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberProfileTradeEntry" nillable="true" type="tns:MemberProfileTradeEntry" />
+  <xs:complexType name="MemberProfileOtherTradeEntry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConsumerTouchPointID" type="ser:guid" />
+      <xs:element minOccurs="0" name="OtherTradeText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TradeType" type="tns:TradeType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberProfileOtherTradeEntry" nillable="true" type="tns:MemberProfileOtherTradeEntry" />
+  <xs:simpleType name="TradeType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="MostRecentTrade" />
+      <xs:enumeration value="PrimaryConstructionTrade" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="TradeType" nillable="true" type="tns:TradeType" />
+  <xs:complexType name="MemberProfileSkillLevelList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MemberProfileSkillLevelList" nillable="true" type="tns:MemberProfileSkillLevelEntry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberProfileSkillLevelList" nillable="true" type="tns:MemberProfileSkillLevelList" />
+  <xs:complexType name="MemberProfileTradeList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MemberProfileTradeList" nillable="true" type="tns:MemberProfileTradeEntry" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MemberProfileTradeList" nillable="true" type="tns:MemberProfileTradeList" />
+</xs:schema>

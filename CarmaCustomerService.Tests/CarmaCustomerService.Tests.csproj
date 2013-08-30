@@ -98,6 +98,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LisTrakTest.cs" />
+    <Compile Include="CarmaTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -106,6 +108,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CarmaCustomerService.BI\CarmaCustomerService.BI.csproj">
+      <Project>{595FEBA5-E706-476C-B70B-64250EC12FC5}</Project>
+      <Name>CarmaCustomerService.BI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarmaCustomerService.Dto\CarmaCustomerService.Dto.csproj">
+      <Project>{F6A1AB41-BC9B-4BB4-A08C-0BCBD7DD75C8}</Project>
+      <Name>CarmaCustomerService.Dto</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CarmaCustomerService\CarmaCustomerService.csproj">
       <Project>{31BCEF1F-0362-4B48-BC2E-8DC4B8EAC7CA}</Project>
       <Name>CarmaCustomerService</Name>

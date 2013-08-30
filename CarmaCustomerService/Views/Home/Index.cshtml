@@ -4,45 +4,101 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div id="search-results">
-    <h3>Search results (found @Model.Count() records)</h3>
 
-    <table id="table-consumers">
-        <thead>
+
+
+<div id="search-results">
+    @{
+        var searchText = Request.QueryString["searchText"];
+        if (string.IsNullOrEmpty(searchText))
+        {
+            @: <h3>Welcome to Consumer Service Station</h3> 
+        }
+        else
+        {
+            <h3>Found @Model.Count() record(s) for search term '@searchText'</h3>
+        }
+    }
+    
+    
+    <div id="pager" class="pager" style="float: right">
+	
+        <img src="~/Content/images/first.png" class="first"/>
+        <img src="~/Content/images/prev.png" class="prev"/>
+        <input type="text" class="pagedisplay"/>
+        <img src="~/Content/images/next.png" class="next"/>
+        <img src="~/Content/images/last.png" class="last"/>
+        <select class="pagesize">
+            <option value="10">10 per page</option>
+            <option value="15">15 per page</option>
+            <option value="20">20 per page</option>
+			
+        </select>
+	    
+    </div>
+    <table id="mytable" class="tablesorter">
+        <thead> 
             <tr>
+                <th></th>
                 <th>Last Name</th>
                 <th>First Name</th>
-                <th>Email/UserID</th>
+                <th>Email</th>
                 <th>Address1</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zip</th>
                 <th>Home Phone</th>
                 <th>Display Name</th>
-                <th>Date Created</th>
-                <th></th>
             </tr>
         </thead>
-        <tfoot>
-            <tr>
-                <td colspan="4">Search results based from CARMA Consumer database. Contact IT for help</td>
-            </tr>
-        </tfoot>
         <tbody>
-            @foreach (var item in Model) {
+            @foreach (var item in Model)
+            {
+                var email =item.UserID ;
+                
                 <tr>
+                    <td>@{
+                            switch (item.TouchPoint.BrandID)
+                            {
+                                case 1:
+                                    @: <div id="bdicon">B</div>
+                                    break;
+                                case 2:
+                                    @: <div id="dwicon">D</div>
+                                    break;
+                                case 4:
+                                    @: <div id="pcicon">P</div>
+                                    break;
+                                default:
+                                    @: -
+                                    break;
+                            }
+                        }</td>
                     <td>@Html.DisplayFor(modelItem => item.ConsumerTouchPointProfile.NameLast)</td>
                     <td>@Html.DisplayFor(modelItem => item.ConsumerTouchPointProfile.NameFirst)</td>
-                    <td>@Html.DisplayFor(modelItem => item.UserID)</td>
+                    <td>@Html.ActionLink(email, "View","Consumer", new { id=item.ConsumerTouchPointID },null)</td>
                     <td>@Html.DisplayFor(modelItem => item.ConsumerTouchPointProfile.ConsumerDemographic.Street)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ConsumerTouchPointProfile.ConsumerDemographic.City)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ConsumerTouchPointProfile.ConsumerDemographic.StateSubDivision.StateSubDivisionAbbreviation)</td>
+                    <td>@Html.DisplayFor(modelItem => item.ConsumerTouchPointProfile.ConsumerDemographic.PostCode)</td>
                     <td>@Html.DisplayFor(modelItem => item.ConsumerTouchPointProfile.ConsumerDemographic.PhoneHome)</td>
                     <td>@Html.DisplayFor(modelItem => item.DisplayName)</td>
-                    <td>@Html.DisplayFor(modelItem => item.ConsumerTouchPointProfile.DateCreated)</td>
-                    <td>View | Reset Password
-                        @*@Html.ActionLink("View", "Edit", new { id=item.Id }) |
-                    @Html.ActionLink("Reset Password", "Details", new { id=item.Id }) *@
-                    </td>
                 </tr>
             }
         </tbody>
     </table>
+    
+    <script defer="defer">
+        $(document).ready(function () {
+
+            if ($("#mytable tbody tr").length > 0) {
+                $("#mytable")
+                    .tablesorter({ widthFixed: true, widgets: ['zebra'], sortList: [[1, 0]] })
+                    .tablesorterPager({ container: $("#pager") });
+            }
+        }
+        );
+    </script>
     @{
         if (!Model.Any())
         {
@@ -50,3 +106,4 @@
         }
     }
 </div>
+

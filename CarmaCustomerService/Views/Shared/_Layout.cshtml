@@ -7,24 +7,32 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
-    <script src="~/Content/carma.js"></script>
+    
     <link href="~/Content/carma.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.tablesorter.min.js"></script>
+    <script src="~/Scripts/jquery.tablesorter.pager.js"></script>
+    <script src="~/Content/carma.js"></script>
+    <link href="~/Content/reset.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.validate.js"></script>
 </head>
 <body style="width: 1000px; margin: 5px auto">
     <div id="header-logo">
-        <img src="~/Content/images/sbd.jpg"><i>CARMA Service Station</i>
+        <a href="/">
+        <img src="~/Content/images/sbd.jpg" border="0"></a>
+            <i>Consumer Service Station</i>
     </div>
-
-    <br />
     <div id="header">
         @using (Html.BeginForm("Search", "Home", FormMethod.Get))
         {
             <div class="header-items">@Html.DropDownList("brands")</div> 
-            <div class="header-items">@Html.DropDownList("searchType")</div>  @: &nbsp;&nbsp; | 
-            <div class="header-items" style="width: 600px">@Html.TextBox("searchText", "", new { style = "width: 595px" })</div> 
+            <div class="header-items">@Html.DropDownList("searchType")</div> <div class="header-items"> | </div>
+            <div class="header-items" style="width: 620px">@Html.TextBox("searchText", "", new { style = "width: 610px" })</div> 
             <div class="header-items">
                 <input type="submit" value="Search" /></div>
-            <span class="stretch"></span>
+          
         }
     </div>
 
@@ -35,25 +43,38 @@
 
     <br />
 
-    <div id="footer">
-        CARMA Service Station web app version 1.0
+    @*    <div id="footer">
+        Consumer Service Station web app version 1.0
         <br/>
         <a href="mailto:suraj.bhattarai@sbdinc.com?subject=CARMA CS IT HELP">CARMA IT Support</a>      |    <a href="https://sbdkproduction.service-now.com/navpage.do" target="_blank">Service-Now</a>
         <br />
         <a href="http://www.dewalt.com" target="_blank">www.dewalt.com </a>    |    <a href="http://www.blackanddecker.com" target="_blank">www.blackanddecker.com</a>   |   <a href="http://www.portercable.com" target="_blank">www.portercable.com</a>
         <br />
         &copy; @DateTime.Today.Year, <a href="http://www.sbdinc.com" target="_blank">SBD Inc</a>
+    </div>*@
+    
+    
+        <div id="footer">
+        
+            &copy; @DateTime.Today.Year, Consumer Service Station web app version 1.0, <a href="http://www.sbdinc.com" target="_blank">SBD INC</a>. 
+            Search results based on CARMA Consumer database. Contact IT for help.
+            <br/>
+            Codename: YETI. You need to be in 'ServiceStation' group in order to access this page. Contact 22222 for help.
     </div>
 
 </body>
 </html>
 <div class="loading" align="center">
-    Loading. Please wait.<br />
+    Working.. Please wait.<br />
     <br />
     <img src="/Content/Images/loading.gif" alt="" />
 </div>
 <script type="text/javascript">
-    $('form').live("submit", function () {
+    $('form').on('submit', function () {
         ShowProgress();
     });
+    
+
+
+
 </script>

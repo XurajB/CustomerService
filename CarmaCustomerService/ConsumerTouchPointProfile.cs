@@ -38,5 +38,6 @@ namespace CarmaCustomerService
         public virtual ConsumerLogInInfo ConsumerLogInInfo { get; set; }
         public virtual ICollection<ConsumerOptIn> ConsumerOptIns { get; set; }
         public virtual ICollection<ConsumerProduct> ConsumerProducts { get; set; }
+        public virtual TouchPoint TouchPoint { get; set; }
     }
 }

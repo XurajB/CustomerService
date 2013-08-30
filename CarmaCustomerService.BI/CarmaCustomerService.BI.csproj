@@ -1,0 +1,722 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{595FEBA5-E706-476C-B70B-64250EC12FC5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarmaCustomerService.BI</RootNamespace>
+    <AssemblyName>CarmaCustomerService.BI</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.AddRequestATradeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.ConsumerTouchPointProfile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.CreateMemberAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.CreateMemberOptInResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.CreateMemberProfileNoLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.CreateMemberProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.EditMemberAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.EditMemberOptInsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.EditMemberProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.EditMemberSegmentationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.EnterSweepstakesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetConsumerTouchpointProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetMemberAccountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetMemberOptInDetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetMemberOptInsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetMemberProfileResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetMemberProfileSkillLevelsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetMemberProfileTradeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetMemberSegmentationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetMemebrProfileNoLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetPasswordRecoveryQuestionIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetPasswordRecoveryQuestionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetSkillNameByIdResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetStateSubDivisionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.GetTradeNameByIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.InsertMemberProfileOtherTradeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.InsertMemberProfileSkillLevelResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.InsertMemberProfileTradeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.IsAvailableDisplayNameResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.LoginWithRecoveryQuestionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.MemberAccount.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.MemberLoginDetail.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.MemberLoginResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.MemberOptInDetailList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.MemberOptInList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.MemberProfile.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.MemberProfileNoLogin.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.MemberProfileSkillLevelList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.MemberProfileTradeList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.MemberSegmentation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.QuickOptInByTouchPointIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.QuickOptInResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.SendPasswordRecoveryEmailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\CarmaCustomerService.BI.ConsumerServiceClient.StateSubDivisionList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\ConsumerService.wsdl" />
+    <None Include="Service References\ConsumerServiceClient\ConsumerService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\ConsumerService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\ConsumerService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\ConsumerService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ConsumerServiceClient\ConsumerService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.AddGoogleTrackingDomainsToListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.BulkLoadContactsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.BulkLoadContactsWithOptionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ChangeContactEmailAddressResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ChangeContactEmailResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ConductorBulkLoadAndTriggerContactsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ConductorBulkLoadAndTriggerContactsWithOptionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ConductorGetConversationsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ConductorGetExternalEventsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.CreateContactListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.CreateListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.CreateProfileAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.CreateProfileHeaderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.DeleteContactListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.DeleteGoogleTrackingDomainsFromListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.DeleteProfileAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.DeleteProfileHeaderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetAccountVmtaCollectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetCampaignCollectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetCharacterSetCollectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetContactListCollectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetContactListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetContactResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetFilteredListCountResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetLegacyProcessStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetMessageStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetProcessStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetProfileHeaderCollectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetSavedMessageCollectionResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetSpamScoreResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.GetSystemIDFromPublicIDResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportAdminContactFeedbackLoopResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportContactLinkClickResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportContactMessageActivityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportConversationContactBounceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportConversationContactDeliveryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportConversationContactOpenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportConversationContactReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportConversationContactRemovalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportConversationLinkClickResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportConversationLocationContactClickResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportConversationLocationContactOpenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportConversationLocationContactReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportImportContactDetailResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportListContactHygieneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportListContactRemovalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportListConversationActivityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportListConversationDeliveryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportListImportHistoryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportListMessageActivityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportListMessageDeliveryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageContactActivityResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageContactBouncesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageContactClickResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageContactOpenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageContactPassalongResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageContactReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageContactRemovalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageLinkClickResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageLocationClickResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageLocationContactClickResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageLocationContactOpenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageLocationContactReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageLocationOpenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportMessageLocationReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportRangeListContactHygieneResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportRangeListContactRemovalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportRangeMessageContactBouncesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportRangeMessageContactClickResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportRangeMessageContactOpenResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportRangeMessageContactPassalongResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportRangeMessageContactReadResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportRangeMessageContactRemovalResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportRangeSubscribedContactsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ReportSubscribedContactsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ScheduleSendListMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.ScheduleSendListMessageWithProfileFilterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.SendListMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.SendListMessageReviewResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.SendListMessageTestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.SendListMessageWithProfileFilterResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.SendSavedMessageResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.SendSavedMessageTestResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.SetContactResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.SubscribeContactResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.SubscribeContactResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.UnsubscribeContactResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.UnsubscribeContactResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.UpdateContactListResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.UpdateProfileAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.UpdateProfileHeaderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.UpdateSubscribedContactAttributeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.UpdateSubscribedContactAttributeWithOptionsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSCampaign.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSCharacterSet.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConductorConversation.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConductorExternalEvent.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContactBounce.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContactClick.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContactHygieneInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContactLinkClick.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContactList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContactMessageActivity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContactOpen.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContactPassalong.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContactRead.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContactRemovalInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSContactSubscriptionInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConversationActivity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConversationContactBounce.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConversationContactDelivery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConversationContactOpen.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConversationContactRead.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConversationContactRemoval.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConversationDelivery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConversationLinkClick.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConversationLocationContactClick.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConversationLocationContactOpen.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSConversationLocationContactRead.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSException.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSFeedbackLoopListing.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSImportContact.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSImportHistory.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSLegacyProcessStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSMessageActivity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSMessageContactActivity.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSMessageDelivery.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSMessageLink.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSMessageLocationClick.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSMessageLocationContactClick.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSMessageLocationContactOpen.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSMessageLocationContactRead.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSMessageLocationOpen.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSMessageLocationRead.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSMessageStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSProcessStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSProfileAttribute.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSProfileHeader.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSSavedMessage.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSSpamScore.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSUpdateContactList.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\CarmaCustomerService.BI.LisTrakClient.WSVmta.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\LisTrakClient\IntegrationService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CarmaService.cs" />
+    <Compile Include="LisTrakService.cs" />
+    <Compile Include="Service References\ConsumerServiceClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\LisTrakClient\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarmaCustomerService.Dto\CarmaCustomerService.Dto.csproj">
+      <Project>{F6A1AB41-BC9B-4BB4-A08C-0BCBD7DD75C8}</Project>
+      <Name>CarmaCustomerService.Dto</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ConsumerServiceClient\" />
+    <WCFMetadataStorage Include="Service References\LisTrakClient\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LisTrakClient\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LisTrakClient\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\LisTrakClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ConsumerServiceClient\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ConsumerServiceClient\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ConsumerServiceClient\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

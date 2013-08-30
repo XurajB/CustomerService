@@ -1,0 +1,95 @@
+﻿@model CarmaCustomerService.ConsumerProduct
+
+@{
+    ViewBag.Title = "EditProduct";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Consumer Product</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <fieldset>
+
+        @Html.HiddenFor(model => model.ConsumerTouchPointID)
+        @Html.HiddenFor(model => Model.TouchPointID)
+        @Html.HiddenFor(model => Model.ConsumerProductID)
+        <div id="view-details">
+
+            <div id="leftside">
+                <div class="editor-label">
+                    Model Number*
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.ModelNumber)
+                    @Html.ValidationMessageFor(model => model.ModelNumber)
+                </div>
+
+                <div class="editor-label">
+                    Serial Number
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.SerialNumber)
+                    @Html.ValidationMessageFor(model => model.SerialNumber)
+                </div>
+            </div>
+            <div id="rightside">
+                <div class="editor-label">
+                    Date Registered*
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.DateCreated, new { @id = "datepicker" })
+                    @Html.ValidationMessageFor(model => model.DateCreated)
+                </div>
+
+                <div class="editor-label">
+                    Date Purchased
+                </div>
+                <div class="editor-field">
+                    @Html.TextBoxFor(model => model.PurchaseDynamic.OriginalDateOfPurchase, new { @id = "datepickerpurchased" })
+                    @Html.ValidationMessageFor(model => model.PurchaseDynamic.OriginalDateOfPurchase)
+                </div>
+
+            </div>
+
+            <div id="validationareaproduct">
+                <p>
+                    Messages
+                </p>
+                <hr style="margin-top: -1px;" />
+                <br />
+                @Html.ValidationSummary(true)
+
+                @{
+    if (ViewBag.successEditUser == true)
+    {
+                    @: <div id="success"> Product Information Successfully Saved!</div>
+                    @Html.ActionLink("Go Back", "View", "Consumer", new { id = Model.ConsumerTouchPointID }, null)
+    }
+
+                }
+            </div>
+            <br/>
+            <br/>
+            <p>
+                <input type="submit" value="Save" />
+                <input type="button" value="Back" onclick="javascript: history.go(-1); return false;" />
+            </p>
+        </div>
+    </fieldset>
+            
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("#datepicker").datepicker({
+            maxDate: '0'
+        });
+        
+        $("#datepickerpurchased").datepicker({
+            maxDate: '0'
+        });
+    });
+</script>

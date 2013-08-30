@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://carma.bdk.com/Services/Consumer" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ConsumerService" targetNamespace="http://carma.bdk.com/Services/Consumer" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://carma.bdk.com/Services/Consumer/Imports">
+      <xsd:import schemaLocation="http://carmaws.wwpti.com:8000/ConsumerService.svc?xsd=xsd0" namespace="http://carma.bdk.com/Services/Consumer" />
+      <xsd:import schemaLocation="http://carmaws.wwpti.com:8000/ConsumerService.svc?xsd=xsd4" namespace="http://carma.bdk.com/Services/Types" />
+      <xsd:import schemaLocation="http://carmaws.wwpti.com:8000/ConsumerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://carmaws.wwpti.com:8000/ConsumerService.svc?xsd=xsd2" namespace="http://carma.bdk.com/Services/Core/Types" />
+      <xsd:import schemaLocation="http://carmaws.wwpti.com:8000/ConsumerService.svc?xsd=xsd3" namespace="http://carma.bdk.com/Services/Consumer/Types" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="MemberLoginRequest">
+    <wsdl:part name="parameters" element="tns:MemberLoginRequest" />
+  </wsdl:message>
+  <wsdl:message name="MemberLoginResponse">
+    <wsdl:part name="parameters" element="tns:MemberLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_MemberLogin_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://carma.bdk.com/Services/Types" name="detail" element="q1:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_MemberLogin_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q2="http://carma.bdk.com/Services/Types" name="detail" element="q2:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="GetConsumerTouchpointProfileRequest">
+    <wsdl:part name="parameters" element="tns:GetConsumerTouchpointProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetConsumerTouchpointProfileResponse">
+    <wsdl:part name="parameters" element="tns:GetConsumerTouchpointProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetConsumerTouchPointProfile_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q3="http://carma.bdk.com/Services/Types" name="detail" element="q3:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetConsumerTouchPointProfile_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q4="http://carma.bdk.com/Services/Types" name="detail" element="q4:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="SendPasswordRecoveryEmailRequest">
+    <wsdl:part name="parameters" element="tns:SendPasswordRecoveryEmailRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_SendPasswordRecoveryEmail_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_SendPasswordRecoveryEmail_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q5="http://carma.bdk.com/Services/Types" name="detail" element="q5:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_SendPasswordRecoveryEmail_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q6="http://carma.bdk.com/Services/Types" name="detail" element="q6:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="GetPasswordRecoveryQuestionRequest">
+    <wsdl:part name="parameters" element="tns:GetPasswordRecoveryQuestionRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetPasswordRecoveryQuestionResponse">
+    <wsdl:part name="parameters" element="tns:GetPasswordRecoveryQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetPasswordRecoveryQuestion_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q7="http://carma.bdk.com/Services/Types" name="detail" element="q7:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetPasswordRecoveryQuestion_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q8="http://carma.bdk.com/Services/Types" name="detail" element="q8:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="LoginWithRecoveryQuestionRequest">
+    <wsdl:part name="parameters" element="tns:LoginWithRecoveryQuestionRequest" />
+  </wsdl:message>
+  <wsdl:message name="LoginWithRecoveryQuestionResponse">
+    <wsdl:part name="parameters" element="tns:LoginWithRecoveryQuestionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_MemberLoginWithRecoveryQuestion_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q9="http://carma.bdk.com/Services/Types" name="detail" element="q9:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_MemberLoginWithRecoveryQuestion_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q10="http://carma.bdk.com/Services/Types" name="detail" element="q10:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="GetPasswordRecoveryQuestionIDRequest">
+    <wsdl:part name="parameters" element="tns:GetPasswordRecoveryQuestionIDRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetPasswordRecoveryQuestionIDResponse">
+    <wsdl:part name="parameters" element="tns:GetPasswordRecoveryQuestionIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetPasswordRecoveryQuestionID_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q11="http://carma.bdk.com/Services/Types" name="detail" element="q11:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetPasswordRecoveryQuestionID_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q12="http://carma.bdk.com/Services/Types" name="detail" element="q12:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="CreateMemberAccountRequest">
+    <wsdl:part name="parameters" element="tns:CreateMemberAccountRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateMemberAccountResponse">
+    <wsdl:part name="parameters" element="tns:CreateMemberAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_CreateMemberAccount_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q13="http://carma.bdk.com/Services/Types" name="detail" element="q13:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_CreateMemberAccount_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q14="http://carma.bdk.com/Services/Types" name="detail" element="q14:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="EditMemberAccountRequest">
+    <wsdl:part name="parameters" element="tns:EditMemberAccountRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_EditMemberAccount_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_EditMemberAccount_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q15="http://carma.bdk.com/Services/Types" name="detail" element="q15:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_EditMemberAccount_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q16="http://carma.bdk.com/Services/Types" name="detail" element="q16:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberAccountRequest">
+    <wsdl:part name="parameters" element="tns:GetMemberAccountRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberAccountResponse">
+    <wsdl:part name="parameters" element="tns:GetMemberAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberAccount_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q17="http://carma.bdk.com/Services/Types" name="detail" element="q17:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberAccount_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q18="http://carma.bdk.com/Services/Types" name="detail" element="q18:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="CreateMemberProfileRequest">
+    <wsdl:part name="parameters" element="tns:CreateMemberProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_CreateMemberProfile_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_CreateMemberProfile_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q19="http://carma.bdk.com/Services/Types" name="detail" element="q19:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_CreateMemberProfile_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q20="http://carma.bdk.com/Services/Types" name="detail" element="q20:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="EditMemberProfileRequest">
+    <wsdl:part name="parameters" element="tns:EditMemberProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_EditMemberProfile_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_EditMemberProfile_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q21="http://carma.bdk.com/Services/Types" name="detail" element="q21:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_EditMemberProfile_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q22="http://carma.bdk.com/Services/Types" name="detail" element="q22:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberProfileRequest">
+    <wsdl:part name="parameters" element="tns:GetMemberProfileRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberProfileResponse">
+    <wsdl:part name="parameters" element="tns:GetMemberProfileResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberProfile_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q23="http://carma.bdk.com/Services/Types" name="detail" element="q23:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberProfile_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q24="http://carma.bdk.com/Services/Types" name="detail" element="q24:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="CreateMemberOptInsRequest">
+    <wsdl:part name="parameters" element="tns:CreateMemberOptInsRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_CreateMemberOptIn_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_CreateMemberOptIn_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q25="http://carma.bdk.com/Services/Types" name="detail" element="q25:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_CreateMemberOptIn_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q26="http://carma.bdk.com/Services/Types" name="detail" element="q26:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="EditMemberOptInsRequest">
+    <wsdl:part name="parameters" element="tns:EditMemberOptInsRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_EditMemberOptIns_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_EditMemberOptIns_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q27="http://carma.bdk.com/Services/Types" name="detail" element="q27:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_EditMemberOptIns_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q28="http://carma.bdk.com/Services/Types" name="detail" element="q28:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberOptInsRequest">
+    <wsdl:part name="parameters" element="tns:GetMemberOptInsRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberOptInsResponse">
+    <wsdl:part name="parameters" element="tns:GetMemberOptInsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberOptIns_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q29="http://carma.bdk.com/Services/Types" name="detail" element="q29:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberOptIns_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q30="http://carma.bdk.com/Services/Types" name="detail" element="q30:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberOptInDetailsRequest">
+    <wsdl:part name="parameters" element="tns:GetMemberOptInDetailsRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberOptInDetailsResponse">
+    <wsdl:part name="parameters" element="tns:GetMemberOptInDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberOptInDetails_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q31="http://carma.bdk.com/Services/Types" name="detail" element="q31:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberOptInDetails_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q32="http://carma.bdk.com/Services/Types" name="detail" element="q32:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="GetStateSubDivisionsRequest">
+    <wsdl:part name="parameters" element="tns:GetStateSubDivisionsRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetStateSubDivisionsResponse">
+    <wsdl:part name="parameters" element="tns:GetStateSubDivisionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetStateSubDivisions_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q33="http://carma.bdk.com/Services/Types" name="detail" element="q33:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetStateSubDivisions_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q34="http://carma.bdk.com/Services/Types" name="detail" element="q34:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="EditMemberSegmentationRequest">
+    <wsdl:part name="parameters" element="tns:EditMemberSegmentationRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_EditMemberSegmentation_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_EditMemberSegmentation_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q35="http://carma.bdk.com/Services/Types" name="detail" element="q35:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_EditMemberSegmentation_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q36="http://carma.bdk.com/Services/Types" name="detail" element="q36:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberSegmentationRequest">
+    <wsdl:part name="parameters" element="tns:GetMemberSegmentationRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberSegmentationResponse">
+    <wsdl:part name="parameters" element="tns:GetMemberSegmentationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberSegmentation_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q37="http://carma.bdk.com/Services/Types" name="detail" element="q37:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberSegmentation_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q38="http://carma.bdk.com/Services/Types" name="detail" element="q38:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="AddRequestATradeRequest">
+    <wsdl:part name="parameters" element="tns:AddRequestATradeRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_AddRequestATrade_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_AddRequestATrade_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q39="http://carma.bdk.com/Services/Types" name="detail" element="q39:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_AddRequestATrade_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q40="http://carma.bdk.com/Services/Types" name="detail" element="q40:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="EnterSweepstakesRequest">
+    <wsdl:part name="parameters" element="tns:EnterSweepstakesRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_EnterSweepstakes_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_EnterSweepstakes_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q41="http://carma.bdk.com/Services/Types" name="detail" element="q41:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_EnterSweepstakes_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q42="http://carma.bdk.com/Services/Types" name="detail" element="q42:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="QuickOptInRequest">
+    <wsdl:part name="parameters" element="tns:QuickOptInRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_QuickOptIn_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_QuickOptIn_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q43="http://carma.bdk.com/Services/Types" name="detail" element="q43:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_QuickOptIn_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q44="http://carma.bdk.com/Services/Types" name="detail" element="q44:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="IsAvailableDisplayNameRequest">
+    <wsdl:part name="parameters" element="tns:IsAvailableDisplayNameRequest" />
+  </wsdl:message>
+  <wsdl:message name="IsAvailableDisplayNameResponse">
+    <wsdl:part name="parameters" element="tns:IsAvailableDisplayNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_IsAvailableDisplayName_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q45="http://carma.bdk.com/Services/Types" name="detail" element="q45:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_IsAvailableDisplayName_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q46="http://carma.bdk.com/Services/Types" name="detail" element="q46:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="CreateMemberProfileNoLoginRequest">
+    <wsdl:part name="parameters" element="tns:CreateMemberProfileNoLoginRequest" />
+  </wsdl:message>
+  <wsdl:message name="CreateMemberProfileNoLoginResponse">
+    <wsdl:part name="parameters" element="tns:CreateMemberProfileNoLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_CreateMemberProfileNoLoginInfo_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q47="http://carma.bdk.com/Services/Types" name="detail" element="q47:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_CreateMemberProfileNoLoginInfo_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q48="http://carma.bdk.com/Services/Types" name="detail" element="q48:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="InsertMemberProfileSkillLevelRequest">
+    <wsdl:part name="parameters" element="tns:InsertMemberProfileSkillLevelRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_InsertMemberProfileSkillLevel_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_InsertMemberProfileSkillLevel_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q49="http://carma.bdk.com/Services/Types" name="detail" element="q49:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_InsertMemberProfileSkillLevel_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q50="http://carma.bdk.com/Services/Types" name="detail" element="q50:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="InsertMemberProfileTradeRequest">
+    <wsdl:part name="parameters" element="tns:InsertMemberProfileTradeRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_InsertMemberProfileTrade_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_InsertMemberProfileTrade_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q51="http://carma.bdk.com/Services/Types" name="detail" element="q51:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_InsertMemberProfileTrade_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q52="http://carma.bdk.com/Services/Types" name="detail" element="q52:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="InsertMemberProfileTradeOtherRequest">
+    <wsdl:part name="parameters" element="tns:InsertMemberProfileTradeOtherRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_InsertMemberProfileOtherTrade_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_InsertMemberProfileOtherTrade_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q53="http://carma.bdk.com/Services/Types" name="detail" element="q53:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_InsertMemberProfileOtherTrade_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q54="http://carma.bdk.com/Services/Types" name="detail" element="q54:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberProfileNoLoginRequest">
+    <wsdl:part name="parameters" element="tns:GetMemberProfileNoLoginRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetMemebrProfileNoLoginResponse">
+    <wsdl:part name="parameters" element="tns:GetMemebrProfileNoLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberProfileNoLoginInfo_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q55="http://carma.bdk.com/Services/Types" name="detail" element="q55:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberProfileNoLoginInfo_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q56="http://carma.bdk.com/Services/Types" name="detail" element="q56:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberProfileSkillLevelsRequest">
+    <wsdl:part name="ConsumerTouchPointID" element="tns:ConsumerTouchPointID" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberProfileSkillLevelsResponse">
+    <wsdl:part name="MemberProfileSkillLevelList" element="tns:MemberProfileSkillLevelList" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberProfileSkillLevels_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q57="http://carma.bdk.com/Services/Types" name="detail" element="q57:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberProfileSkillLevels_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q58="http://carma.bdk.com/Services/Types" name="detail" element="q58:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="GetSkillNameByIdRequest">
+    <wsdl:part name="SkillID" element="tns:SkillID" />
+  </wsdl:message>
+  <wsdl:message name="GetSkillNameByIdResponse">
+    <wsdl:part name="SkillName" element="tns:SkillName" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetSkillNameByID_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q59="http://carma.bdk.com/Services/Types" name="detail" element="q59:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetSkillNameByID_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q60="http://carma.bdk.com/Services/Types" name="detail" element="q60:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberProfileTradeRequest">
+    <wsdl:part name="parameters" element="tns:GetMemberProfileTradeRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetMemberProfileTradeResponse">
+    <wsdl:part name="parameters" element="tns:GetMemberProfileTradeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberProfileTrades_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q61="http://carma.bdk.com/Services/Types" name="detail" element="q61:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetMemberProfileTrades_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q62="http://carma.bdk.com/Services/Types" name="detail" element="q62:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="GetTradeNameByIDRequest">
+    <wsdl:part name="parameters" element="tns:GetTradeNameByIDRequest" />
+  </wsdl:message>
+  <wsdl:message name="GetTradeNameByIDResponse">
+    <wsdl:part name="parameters" element="tns:GetTradeNameByIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetTradeNameByID_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q63="http://carma.bdk.com/Services/Types" name="detail" element="q63:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_GetTradeNameByID_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q64="http://carma.bdk.com/Services/Types" name="detail" element="q64:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="QuickOptInByTouchPointIDRequest">
+    <wsdl:part name="parameters" element="tns:QuickOptInByTouchPointIDRequest" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_QuickOptInByTouchPointID_OutputMessage" />
+  <wsdl:message name="ConsumerServiceContract_QuickOptInByTouchPointID_BusinessRuleFaultFault_FaultMessage">
+    <wsdl:part xmlns:q65="http://carma.bdk.com/Services/Types" name="detail" element="q65:BusinessRuleFault" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerServiceContract_QuickOptInByTouchPointID_UnknownServiceFaultFault_FaultMessage">
+    <wsdl:part xmlns:q66="http://carma.bdk.com/Services/Types" name="detail" element="q66:UnknownServiceFault" />
+  </wsdl:message>
+  <wsdl:portType name="ConsumerServiceContract">
+    <wsdl:operation name="MemberLogin">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/MemberLogin" name="MemberLoginRequest" message="tns:MemberLoginRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/MemberLoginResponse" name="MemberLoginResponse" message="tns:MemberLoginResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/MemberLoginBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_MemberLogin_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/MemberLoginUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_MemberLogin_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerTouchPointProfile">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetConsumerTouchPointProfile" name="GetConsumerTouchpointProfileRequest" message="tns:GetConsumerTouchpointProfileRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetConsumerTouchPointProfileResponse" name="GetConsumerTouchpointProfileResponse" message="tns:GetConsumerTouchpointProfileResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetConsumerTouchPointProfileUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetConsumerTouchPointProfile_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetConsumerTouchPointProfileBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetConsumerTouchPointProfile_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SendPasswordRecoveryEmail">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/SendPasswordRecoveryEmail" name="SendPasswordRecoveryEmailRequest" message="tns:SendPasswordRecoveryEmailRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/SendPasswordRecoveryEmailResponse" message="tns:ConsumerServiceContract_SendPasswordRecoveryEmail_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/SendPasswordRecoveryEmailUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_SendPasswordRecoveryEmail_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/SendPasswordRecoveryEmailBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_SendPasswordRecoveryEmail_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPasswordRecoveryQuestion">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetPasswordRecoveryQuestion" name="GetPasswordRecoveryQuestionRequest" message="tns:GetPasswordRecoveryQuestionRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetPasswordRecoveryQuestionResponse" name="GetPasswordRecoveryQuestionResponse" message="tns:GetPasswordRecoveryQuestionResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetPasswordRecoveryQuestionUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetPasswordRecoveryQuestion_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetPasswordRecoveryQuestionBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetPasswordRecoveryQuestion_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MemberLoginWithRecoveryQuestion">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/MemberLoginWithRecoveryQuestion" name="LoginWithRecoveryQuestionRequest" message="tns:LoginWithRecoveryQuestionRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/MemberLoginWithRecoveryQuestionResponse" name="LoginWithRecoveryQuestionResponse" message="tns:LoginWithRecoveryQuestionResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/MemberLoginWithRecoveryQuestionBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_MemberLoginWithRecoveryQuestion_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/MemberLoginWithRecoveryQuestionUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_MemberLoginWithRecoveryQuestion_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPasswordRecoveryQuestionID">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetPasswordRecoveryQuestionID" name="GetPasswordRecoveryQuestionIDRequest" message="tns:GetPasswordRecoveryQuestionIDRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetPasswordRecoveryQuestionIDResponse" name="GetPasswordRecoveryQuestionIDResponse" message="tns:GetPasswordRecoveryQuestionIDResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetPasswordRecoveryQuestionIDUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetPasswordRecoveryQuestionID_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetPasswordRecoveryQuestionIDBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetPasswordRecoveryQuestionID_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateMemberAccount">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberAccount" name="CreateMemberAccountRequest" message="tns:CreateMemberAccountRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberAccountResponse" name="CreateMemberAccountResponse" message="tns:CreateMemberAccountResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberAccountBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_CreateMemberAccount_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberAccountUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_CreateMemberAccount_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditMemberAccount">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberAccount" name="EditMemberAccountRequest" message="tns:EditMemberAccountRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberAccountResponse" message="tns:ConsumerServiceContract_EditMemberAccount_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberAccountBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_EditMemberAccount_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberAccountUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_EditMemberAccount_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberAccount">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberAccount" name="GetMemberAccountRequest" message="tns:GetMemberAccountRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberAccountResponse" name="GetMemberAccountResponse" message="tns:GetMemberAccountResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberAccountBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetMemberAccount_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberAccountUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetMemberAccount_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateMemberProfile">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberProfile" name="CreateMemberProfileRequest" message="tns:CreateMemberProfileRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberProfileResponse" message="tns:ConsumerServiceContract_CreateMemberProfile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberProfileBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_CreateMemberProfile_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberProfileUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_CreateMemberProfile_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditMemberProfile">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberProfile" name="EditMemberProfileRequest" message="tns:EditMemberProfileRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberProfileResponse" message="tns:ConsumerServiceContract_EditMemberProfile_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberProfileBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_EditMemberProfile_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberProfileUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_EditMemberProfile_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberProfile">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfile" name="GetMemberProfileRequest" message="tns:GetMemberProfileRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileResponse" name="GetMemberProfileResponse" message="tns:GetMemberProfileResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetMemberProfile_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetMemberProfile_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateMemberOptIn">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberOptIn" name="CreateMemberOptInsRequest" message="tns:CreateMemberOptInsRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberOptInResponse" message="tns:ConsumerServiceContract_CreateMemberOptIn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberOptInBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_CreateMemberOptIn_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberOptInUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_CreateMemberOptIn_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditMemberOptIns">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberOptIns" name="EditMemberOptInsRequest" message="tns:EditMemberOptInsRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberOptInsResponse" message="tns:ConsumerServiceContract_EditMemberOptIns_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberOptInsUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_EditMemberOptIns_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberOptInsBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_EditMemberOptIns_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberOptIns">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberOptIns" name="GetMemberOptInsRequest" message="tns:GetMemberOptInsRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberOptInsResponse" name="GetMemberOptInsResponse" message="tns:GetMemberOptInsResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberOptInsUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetMemberOptIns_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberOptInsBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetMemberOptIns_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberOptInDetails">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberOptInDetails" name="GetMemberOptInDetailsRequest" message="tns:GetMemberOptInDetailsRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberOptInDetailsResponse" name="GetMemberOptInDetailsResponse" message="tns:GetMemberOptInDetailsResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberOptInDetailsBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetMemberOptInDetails_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberOptInDetailsUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetMemberOptInDetails_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStateSubDivisions">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetStateSubDivisions" name="GetStateSubDivisionsRequest" message="tns:GetStateSubDivisionsRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetStateSubDivisionsResponse" name="GetStateSubDivisionsResponse" message="tns:GetStateSubDivisionsResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetStateSubDivisionsBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetStateSubDivisions_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetStateSubDivisionsUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetStateSubDivisions_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EditMemberSegmentation">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberSegmentation" name="EditMemberSegmentationRequest" message="tns:EditMemberSegmentationRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberSegmentationResponse" message="tns:ConsumerServiceContract_EditMemberSegmentation_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberSegmentationBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_EditMemberSegmentation_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberSegmentationUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_EditMemberSegmentation_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberSegmentation">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberSegmentation" name="GetMemberSegmentationRequest" message="tns:GetMemberSegmentationRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberSegmentationResponse" name="GetMemberSegmentationResponse" message="tns:GetMemberSegmentationResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberSegmentationUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetMemberSegmentation_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberSegmentationBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetMemberSegmentation_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddRequestATrade">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/AddRequestATrade" name="AddRequestATradeRequest" message="tns:AddRequestATradeRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/AddRequestATradeResponse" message="tns:ConsumerServiceContract_AddRequestATrade_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/AddRequestATradeUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_AddRequestATrade_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/AddRequestATradeBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_AddRequestATrade_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EnterSweepstakes">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EnterSweepstakes" name="EnterSweepstakesRequest" message="tns:EnterSweepstakesRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EnterSweepstakesResponse" message="tns:ConsumerServiceContract_EnterSweepstakes_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EnterSweepstakesBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_EnterSweepstakes_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EnterSweepstakesUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_EnterSweepstakes_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QuickOptIn">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/QuickOptIn" name="QuickOptInRequest" message="tns:QuickOptInRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/QuickOptInResponse" message="tns:ConsumerServiceContract_QuickOptIn_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/QuickOptInUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_QuickOptIn_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/QuickOptInBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_QuickOptIn_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsAvailableDisplayName">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/IsAvailableDisplayName" name="IsAvailableDisplayNameRequest" message="tns:IsAvailableDisplayNameRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/IsAvailableDisplayNameResponse" name="IsAvailableDisplayNameResponse" message="tns:IsAvailableDisplayNameResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/IsAvailableDisplayNameUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_IsAvailableDisplayName_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/IsAvailableDisplayNameBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_IsAvailableDisplayName_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateMemberProfileNoLoginInfo">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberProfileNoLoginInfo" name="CreateMemberProfileNoLoginRequest" message="tns:CreateMemberProfileNoLoginRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberProfileNoLoginInfoResponse" name="CreateMemberProfileNoLoginResponse" message="tns:CreateMemberProfileNoLoginResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberProfileNoLoginInfoBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_CreateMemberProfileNoLoginInfo_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberProfileNoLoginInfoUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_CreateMemberProfileNoLoginInfo_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertMemberProfileSkillLevel">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileSkillLevel" name="InsertMemberProfileSkillLevelRequest" message="tns:InsertMemberProfileSkillLevelRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileSkillLevelResponse" message="tns:ConsumerServiceContract_InsertMemberProfileSkillLevel_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileSkillLevelUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_InsertMemberProfileSkillLevel_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileSkillLevelBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_InsertMemberProfileSkillLevel_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertMemberProfileTrade">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileTrade" name="InsertMemberProfileTradeRequest" message="tns:InsertMemberProfileTradeRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileTradeResponse" message="tns:ConsumerServiceContract_InsertMemberProfileTrade_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileTradeBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_InsertMemberProfileTrade_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileTradeUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_InsertMemberProfileTrade_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertMemberProfileOtherTrade">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileOtherTrade" name="InsertMemberProfileTradeOtherRequest" message="tns:InsertMemberProfileTradeOtherRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileOtherTradeResponse" message="tns:ConsumerServiceContract_InsertMemberProfileOtherTrade_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileOtherTradeBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_InsertMemberProfileOtherTrade_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileOtherTradeUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_InsertMemberProfileOtherTrade_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberProfileNoLoginInfo">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileNoLoginInfo" name="GetMemberProfileNoLoginRequest" message="tns:GetMemberProfileNoLoginRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileNoLoginInfoResponse" name="GetMemebrProfileNoLoginResponse" message="tns:GetMemebrProfileNoLoginResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileNoLoginInfoUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetMemberProfileNoLoginInfo_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileNoLoginInfoBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetMemberProfileNoLoginInfo_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberProfileSkillLevels">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileSkillLevels" name="GetMemberProfileSkillLevelsRequest" message="tns:GetMemberProfileSkillLevelsRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileSkillLevelsResponse" name="GetMemberProfileSkillLevelsResponse" message="tns:GetMemberProfileSkillLevelsResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileSkillLevelsBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetMemberProfileSkillLevels_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileSkillLevelsUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetMemberProfileSkillLevels_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSkillNameByID">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetSkillNameByID" name="GetSkillNameByIdRequest" message="tns:GetSkillNameByIdRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetSkillNameByIDResponse" name="GetSkillNameByIdResponse" message="tns:GetSkillNameByIdResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetSkillNameByIDBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetSkillNameByID_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetSkillNameByIDUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetSkillNameByID_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberProfileTrades">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileTrades" name="GetMemberProfileTradeRequest" message="tns:GetMemberProfileTradeRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileTradesResponse" name="GetMemberProfileTradeResponse" message="tns:GetMemberProfileTradeResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileTradesBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetMemberProfileTrades_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileTradesUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetMemberProfileTrades_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeNameByID">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetTradeNameByID" name="GetTradeNameByIDRequest" message="tns:GetTradeNameByIDRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetTradeNameByIDResponse" name="GetTradeNameByIDResponse" message="tns:GetTradeNameByIDResponse" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetTradeNameByIDUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_GetTradeNameByID_UnknownServiceFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetTradeNameByIDBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_GetTradeNameByID_BusinessRuleFaultFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="QuickOptInByTouchPointID">
+      <wsdl:input wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/QuickOptInByTouchPointID" name="QuickOptInByTouchPointIDRequest" message="tns:QuickOptInByTouchPointIDRequest" />
+      <wsdl:output wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/QuickOptInByTouchPointIDResponse" message="tns:ConsumerServiceContract_QuickOptInByTouchPointID_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/QuickOptInByTouchPointIDBusinessRuleFaultFault" name="BusinessRuleFaultFault" message="tns:ConsumerServiceContract_QuickOptInByTouchPointID_BusinessRuleFaultFault_FaultMessage" />
+      <wsdl:fault wsaw:Action="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/QuickOptInByTouchPointIDUnknownServiceFaultFault" name="UnknownServiceFaultFault" message="tns:ConsumerServiceContract_QuickOptInByTouchPointID_UnknownServiceFaultFault_FaultMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DefaultEndpoint" type="tns:ConsumerServiceContract">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="MemberLogin">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/MemberLogin" style="document" />
+      <wsdl:input name="MemberLoginRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="MemberLoginResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerTouchPointProfile">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetConsumerTouchPointProfile" style="document" />
+      <wsdl:input name="GetConsumerTouchpointProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetConsumerTouchpointProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SendPasswordRecoveryEmail">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/SendPasswordRecoveryEmail" style="document" />
+      <wsdl:input name="SendPasswordRecoveryEmailRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPasswordRecoveryQuestion">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetPasswordRecoveryQuestion" style="document" />
+      <wsdl:input name="GetPasswordRecoveryQuestionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPasswordRecoveryQuestionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MemberLoginWithRecoveryQuestion">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/MemberLoginWithRecoveryQuestion" style="document" />
+      <wsdl:input name="LoginWithRecoveryQuestionRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="LoginWithRecoveryQuestionResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetPasswordRecoveryQuestionID">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetPasswordRecoveryQuestionID" style="document" />
+      <wsdl:input name="GetPasswordRecoveryQuestionIDRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetPasswordRecoveryQuestionIDResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMemberAccount">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberAccount" style="document" />
+      <wsdl:input name="CreateMemberAccountRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateMemberAccountResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditMemberAccount">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberAccount" style="document" />
+      <wsdl:input name="EditMemberAccountRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberAccount">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberAccount" style="document" />
+      <wsdl:input name="GetMemberAccountRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMemberAccountResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMemberProfile">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberProfile" style="document" />
+      <wsdl:input name="CreateMemberProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditMemberProfile">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberProfile" style="document" />
+      <wsdl:input name="EditMemberProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberProfile">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfile" style="document" />
+      <wsdl:input name="GetMemberProfileRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMemberProfileResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMemberOptIn">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberOptIn" style="document" />
+      <wsdl:input name="CreateMemberOptInsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditMemberOptIns">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberOptIns" style="document" />
+      <wsdl:input name="EditMemberOptInsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberOptIns">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberOptIns" style="document" />
+      <wsdl:input name="GetMemberOptInsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMemberOptInsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberOptInDetails">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberOptInDetails" style="document" />
+      <wsdl:input name="GetMemberOptInDetailsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMemberOptInDetailsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetStateSubDivisions">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetStateSubDivisions" style="document" />
+      <wsdl:input name="GetStateSubDivisionsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetStateSubDivisionsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EditMemberSegmentation">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EditMemberSegmentation" style="document" />
+      <wsdl:input name="EditMemberSegmentationRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberSegmentation">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberSegmentation" style="document" />
+      <wsdl:input name="GetMemberSegmentationRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMemberSegmentationResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="AddRequestATrade">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/AddRequestATrade" style="document" />
+      <wsdl:input name="AddRequestATradeRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="EnterSweepstakes">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/EnterSweepstakes" style="document" />
+      <wsdl:input name="EnterSweepstakesRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="QuickOptIn">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/QuickOptIn" style="document" />
+      <wsdl:input name="QuickOptInRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="IsAvailableDisplayName">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/IsAvailableDisplayName" style="document" />
+      <wsdl:input name="IsAvailableDisplayNameRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="IsAvailableDisplayNameResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="CreateMemberProfileNoLoginInfo">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/CreateMemberProfileNoLoginInfo" style="document" />
+      <wsdl:input name="CreateMemberProfileNoLoginRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="CreateMemberProfileNoLoginResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InsertMemberProfileSkillLevel">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileSkillLevel" style="document" />
+      <wsdl:input name="InsertMemberProfileSkillLevelRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InsertMemberProfileTrade">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileTrade" style="document" />
+      <wsdl:input name="InsertMemberProfileTradeRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="InsertMemberProfileOtherTrade">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/InsertMemberProfileOtherTrade" style="document" />
+      <wsdl:input name="InsertMemberProfileTradeOtherRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberProfileNoLoginInfo">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileNoLoginInfo" style="document" />
+      <wsdl:input name="GetMemberProfileNoLoginRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMemebrProfileNoLoginResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberProfileSkillLevels">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileSkillLevels" style="document" />
+      <wsdl:input name="GetMemberProfileSkillLevelsRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMemberProfileSkillLevelsResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetSkillNameByID">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetSkillNameByID" style="document" />
+      <wsdl:input name="GetSkillNameByIdRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetSkillNameByIdResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetMemberProfileTrades">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetMemberProfileTrades" style="document" />
+      <wsdl:input name="GetMemberProfileTradeRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetMemberProfileTradeResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="GetTradeNameByID">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/GetTradeNameByID" style="document" />
+      <wsdl:input name="GetTradeNameByIDRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="GetTradeNameByIDResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="QuickOptInByTouchPointID">
+      <soap:operation soapAction="http://carma.bdk.com/Services/Consumer/ConsumerServiceContract/QuickOptInByTouchPointID" style="document" />
+      <wsdl:input name="QuickOptInByTouchPointIDRequest">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="BusinessRuleFaultFault">
+        <soap:fault use="literal" name="BusinessRuleFaultFault" namespace="" />
+      </wsdl:fault>
+      <wsdl:fault name="UnknownServiceFaultFault">
+        <soap:fault use="literal" name="UnknownServiceFaultFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ConsumerService">
+    <wsdl:port name="DefaultEndpoint" binding="tns:DefaultEndpoint">
+      <soap:address location="http://carmaws.wwpti.com:8000/ConsumerService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

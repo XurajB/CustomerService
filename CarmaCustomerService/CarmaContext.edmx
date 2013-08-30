@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CarmaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CarmaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="CarmaModelStoreContainer">
           <EntitySet Name="ConsumerDemographic" EntityType="CarmaModel.Store.ConsumerDemographic" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ConsumerLogInInfo" EntityType="CarmaModel.Store.ConsumerLogInInfo" store:Type="Tables" Schema="dbo" />
@@ -12,13 +12,38 @@
           <EntitySet Name="ConsumerProduct" EntityType="CarmaModel.Store.ConsumerProduct" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ConsumerPurchaseReason" EntityType="CarmaModel.Store.ConsumerPurchaseReason" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ConsumerTouchPointProfile" EntityType="CarmaModel.Store.ConsumerTouchPointProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductSatisfaction" EntityType="CarmaModel.Store.ProductSatisfaction" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ProductSatisfactionOld" EntityType="CarmaModel.Store.ProductSatisfactionOld" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="PurchaseDynamic" EntityType="CarmaModel.Store.PurchaseDynamic" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RecoveryQuestion" EntityType="CarmaModel.Store.RecoveryQuestion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="StateSubDivision" EntityType="CarmaModel.Store.StateSubDivision" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TouchPoint" EntityType="CarmaModel.Store.TouchPoint" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK__ProductSa__Consu__521A10ED" Association="CarmaModel.Store.FK__ProductSa__Consu__521A10ED">
+            <End Role="ConsumerProduct" EntitySet="ConsumerProduct" />
+            <End Role="ProductSatisfaction" EntitySet="ProductSatisfaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerAccount_SourceInstance" Association="CarmaModel.Store.FK_ConsumerAccount_SourceInstance">
+            <End Role="TouchPoint" EntitySet="TouchPoint" />
+            <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfile" />
+          </AssociationSet>
           <AssociationSet Name="FK_ConsumerDemographic_ConsumerTouchPointProfile" Association="CarmaModel.Store.FK_ConsumerDemographic_ConsumerTouchPointProfile">
             <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfile" />
             <End Role="ConsumerDemographic" EntitySet="ConsumerDemographic" />
           </AssociationSet>
+          <AssociationSet Name="FK_ConsumerDemographic_StateSubDivision1" Association="CarmaModel.Store.FK_ConsumerDemographic_StateSubDivision1">
+            <End Role="StateSubDivision" EntitySet="StateSubDivision" />
+            <End Role="ConsumerDemographic" EntitySet="ConsumerDemographic" />
+          </AssociationSet>
           <AssociationSet Name="FK_ConsumerLogInInfo_ConsumerTouchPointProfile" Association="CarmaModel.Store.FK_ConsumerLogInInfo_ConsumerTouchPointProfile">
             <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfile" />
+            <End Role="ConsumerLogInInfo" EntitySet="ConsumerLogInInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerLogInInfo_RecoveryQuestion" Association="CarmaModel.Store.FK_ConsumerLogInInfo_RecoveryQuestion">
+            <End Role="RecoveryQuestion" EntitySet="RecoveryQuestion" />
+            <End Role="ConsumerLogInInfo" EntitySet="ConsumerLogInInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerLogInInfo_TouchPoint" Association="CarmaModel.Store.FK_ConsumerLogInInfo_TouchPoint">
+            <End Role="TouchPoint" EntitySet="TouchPoint" />
             <End Role="ConsumerLogInInfo" EntitySet="ConsumerLogInInfo" />
           </AssociationSet>
           <AssociationSet Name="FK_ConsumerOptIn_ConsumerTouchPoint" Association="CarmaModel.Store.FK_ConsumerOptIn_ConsumerTouchPoint">
@@ -29,9 +54,17 @@
             <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfile" />
             <End Role="ConsumerProduct" EntitySet="ConsumerProduct" />
           </AssociationSet>
+          <AssociationSet Name="FK_ConsumerProduct_TouchPoint" Association="CarmaModel.Store.FK_ConsumerProduct_TouchPoint">
+            <End Role="TouchPoint" EntitySet="TouchPoint" />
+            <End Role="ConsumerProduct" EntitySet="ConsumerProduct" />
+          </AssociationSet>
           <AssociationSet Name="FK_ConsumerPurchaseReason_PurchaseDynamic" Association="CarmaModel.Store.FK_ConsumerPurchaseReason_PurchaseDynamic">
             <End Role="PurchaseDynamic" EntitySet="PurchaseDynamic" />
             <End Role="ConsumerPurchaseReason" EntitySet="ConsumerPurchaseReason" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductSatisfaction_ConsumerProduct" Association="CarmaModel.Store.FK_ProductSatisfaction_ConsumerProduct">
+            <End Role="ConsumerProduct" EntitySet="ConsumerProduct" />
+            <End Role="ProductSatisfactionOld" EntitySet="ProductSatisfactionOld" />
           </AssociationSet>
           <AssociationSet Name="FK_PurchaseDynamic_ConsumerProduct" Association="CarmaModel.Store.FK_PurchaseDynamic_ConsumerProduct">
             <End Role="ConsumerProduct" EntitySet="ConsumerProduct" />
@@ -138,6 +171,77 @@
           <Property Name="SiteReferredFrom" Type="nvarchar" MaxLength="255" />
           <Property Name="DeWaltMemberID" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProductSatisfaction">
+          <Key>
+            <PropertyRef Name="ConsumerProductID" />
+            <PropertyRef Name="ProductSatisfactionTypeID" />
+          </Key>
+          <Property Name="ConsumerProductID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductSatisfactionTypeID" Type="int" Nullable="false" />
+          <Property Name="DateSurveyCompleted" Type="date" Nullable="false" />
+          <Property Name="LikelyToRecommendProduct" Type="int" />
+          <Property Name="LikelyToRecommendBrand" Type="int" />
+          <Property Name="LikelyToPurchaseBrand" Type="int" />
+          <Property Name="NumberOfTimesUsedID" Type="int" />
+          <Property Name="PerformanceExpectationLevelID" Type="int" />
+          <Property Name="PurchasingActivityID" Type="int" />
+          <Property Name="ContactCustomerServiceByPhone" Type="bit" />
+          <Property Name="ContactCustomerServiceByEmail" Type="bit" />
+          <Property Name="VisitedWebSiteForProductInfo" Type="bit" />
+          <Property Name="VisitedWebSiteForProjectInfo" Type="bit" />
+          <Property Name="VisitedWebSiteForCustomerServiceInfo" Type="bit" />
+          <Property Name="VisitedWebSiteForAnyOtherReason" Type="bit" />
+          <Property Name="VisitedServiceCenter" Type="bit" />
+          <Property Name="ReceivedEmailFromBrand" Type="bit" />
+          <Property Name="DoNotRecallAny" Type="bit" />
+          <Property Name="PositiveFeedback" Type="ntext" />
+          <Property Name="ConstructiveFeedback" Type="ntext" />
+        </EntityType>
+        <EntityType Name="ProductSatisfactionOld">
+          <Key>
+            <PropertyRef Name="ConsumerProductID" />
+          </Key>
+          <Property Name="ConsumerProductID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LikelyToRecommendProduct" Type="int" />
+          <Property Name="LikelyToRecommendProduct6week" Type="int" />
+          <Property Name="LikelyToRecommendProduct6month" Type="int" />
+          <Property Name="LikelyToRecommendBrand6week" Type="int" />
+          <Property Name="LikelyToRecommendBrand6month" Type="int" />
+          <Property Name="LikelyToPurchaseBrand" Type="int" />
+          <Property Name="LikelyToPurchaseBrand6week" Type="int" />
+          <Property Name="LikelyToPurchaseBrand6month" Type="int" />
+          <Property Name="NumberOfTimesUsedID6week" Type="int" />
+          <Property Name="NumberOfTimesUsedID6month" Type="int" />
+          <Property Name="PerformanceExpectationLevelID6week" Type="int" />
+          <Property Name="PerformanceExpectationLevelID6month" Type="int" />
+          <Property Name="PurchasingActivityID6week" Type="int" />
+          <Property Name="PurchasingActivityID6month" Type="int" />
+          <Property Name="ContactCustomerServiceByPhone6week" Type="bit" />
+          <Property Name="ContactCustomerServiceByPhone6month" Type="bit" />
+          <Property Name="ContactCustomerServiceByEmail6week" Type="bit" />
+          <Property Name="ContactCustomerServiceByEmail6month" Type="bit" />
+          <Property Name="VisitedWebSiteforProductInfo6week" Type="bit" />
+          <Property Name="VisitedWebSiteforProductInfo6month" Type="bit" />
+          <Property Name="VisitedWebSiteforProjectInfo6week" Type="bit" />
+          <Property Name="VisitedWebSiteforProjectInfo6month" Type="bit" />
+          <Property Name="VisitedWebSiteforCustServiceInfo6week" Type="bit" />
+          <Property Name="VisitedWebSiteforCustServiceInfo6month" Type="bit" />
+          <Property Name="VisitedWebSiteforAnyOtherReason6week" Type="bit" />
+          <Property Name="VisitedWebSiteforAnyOtherReason6month" Type="bit" />
+          <Property Name="VisitedServiceCenter6week" Type="bit" />
+          <Property Name="VisitedServiceCenter6month" Type="bit" />
+          <Property Name="ReceivedEmailFromBrand6week" Type="bit" />
+          <Property Name="ReceivedEmailFromBrand6month" Type="bit" />
+          <Property Name="DoNotRecallAny6week" Type="bit" />
+          <Property Name="DoNotRecallAny6month" Type="bit" />
+          <Property Name="PositiveFeedback6week" Type="ntext" />
+          <Property Name="PositiveFeedback6month" Type="ntext" />
+          <Property Name="ConstructiveFeedback6week" Type="ntext" />
+          <Property Name="ConstructiveFeedback6month" Type="ntext" />
+          <Property Name="Date6weekSurveyTaken" Type="date" />
+          <Property Name="Date6monthSurveyTaken" Type="date" />
+          <Property Name="DateMostRecentResponse" Type="date" />
+        </EntityType>
         <EntityType Name="PurchaseDynamic">
           <Key>
             <PropertyRef Name="ConsumerProductID" />
@@ -149,6 +253,62 @@
           <Property Name="GiftTypeID" Type="int" />
           <Property Name="IntendedUsageID" Type="int" />
         </EntityType>
+        <EntityType Name="RecoveryQuestion">
+          <Key>
+            <PropertyRef Name="RecoveryQuestionID" />
+          </Key>
+          <Property Name="RecoveryQuestionID" Type="int" Nullable="false" />
+          <Property Name="RecoveryQuestionText" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="StateSubDivision">
+          <Key>
+            <PropertyRef Name="StateSubDivisionID" />
+          </Key>
+          <Property Name="StateSubDivisionID" Type="int" Nullable="false" />
+          <Property Name="StateSubDivisionFullName" Type="nvarchar" Nullable="false" MaxLength="75" />
+          <Property Name="StateSubDivisionAbbreviation" Type="nvarchar" MaxLength="5" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TouchPoint">
+          <Key>
+            <PropertyRef Name="TouchPointID" />
+          </Key>
+          <Property Name="TouchPointID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="TouchPointNameShort" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="TouchPointNameLong" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="TouchPointTypeID" Type="uniqueidentifier" />
+          <Property Name="TouchPointSystemID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="BrandID" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="DateStarted" Type="datetime" />
+          <Property Name="DateEnded" Type="datetime" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="SourceKey" Type="nvarchar" MaxLength="160" />
+        </EntityType>
+        <Association Name="FK__ProductSa__Consu__521A10ED">
+          <End Role="ConsumerProduct" Type="CarmaModel.Store.ConsumerProduct" Multiplicity="1" />
+          <End Role="ProductSatisfaction" Type="CarmaModel.Store.ProductSatisfaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerProduct">
+              <PropertyRef Name="ConsumerProductID" />
+            </Principal>
+            <Dependent Role="ProductSatisfaction">
+              <PropertyRef Name="ConsumerProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerAccount_SourceInstance">
+          <End Role="TouchPoint" Type="CarmaModel.Store.TouchPoint" Multiplicity="1" />
+          <End Role="ConsumerTouchPointProfile" Type="CarmaModel.Store.ConsumerTouchPointProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouchPoint">
+              <PropertyRef Name="TouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerTouchPointProfile">
+              <PropertyRef Name="TouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ConsumerDemographic_ConsumerTouchPointProfile">
           <End Role="ConsumerTouchPointProfile" Type="CarmaModel.Store.ConsumerTouchPointProfile" Multiplicity="1" />
           <End Role="ConsumerDemographic" Type="CarmaModel.Store.ConsumerDemographic" Multiplicity="0..1" />
@@ -161,6 +321,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ConsumerDemographic_StateSubDivision1">
+          <End Role="StateSubDivision" Type="CarmaModel.Store.StateSubDivision" Multiplicity="1" />
+          <End Role="ConsumerDemographic" Type="CarmaModel.Store.ConsumerDemographic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateSubDivision">
+              <PropertyRef Name="StateSubDivisionID" />
+            </Principal>
+            <Dependent Role="ConsumerDemographic">
+              <PropertyRef Name="StateSubDivisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ConsumerLogInInfo_ConsumerTouchPointProfile">
           <End Role="ConsumerTouchPointProfile" Type="CarmaModel.Store.ConsumerTouchPointProfile" Multiplicity="1" />
           <End Role="ConsumerLogInInfo" Type="CarmaModel.Store.ConsumerLogInInfo" Multiplicity="0..1" />
@@ -170,6 +342,30 @@
             </Principal>
             <Dependent Role="ConsumerLogInInfo">
               <PropertyRef Name="ConsumerTouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerLogInInfo_RecoveryQuestion">
+          <End Role="RecoveryQuestion" Type="CarmaModel.Store.RecoveryQuestion" Multiplicity="1" />
+          <End Role="ConsumerLogInInfo" Type="CarmaModel.Store.ConsumerLogInInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecoveryQuestion">
+              <PropertyRef Name="RecoveryQuestionID" />
+            </Principal>
+            <Dependent Role="ConsumerLogInInfo">
+              <PropertyRef Name="RecoveryQuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerLogInInfo_TouchPoint">
+          <End Role="TouchPoint" Type="CarmaModel.Store.TouchPoint" Multiplicity="1" />
+          <End Role="ConsumerLogInInfo" Type="CarmaModel.Store.ConsumerLogInInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouchPoint">
+              <PropertyRef Name="TouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerLogInInfo">
+              <PropertyRef Name="TouchPointID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -197,6 +393,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ConsumerProduct_TouchPoint">
+          <End Role="TouchPoint" Type="CarmaModel.Store.TouchPoint" Multiplicity="1" />
+          <End Role="ConsumerProduct" Type="CarmaModel.Store.ConsumerProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouchPoint">
+              <PropertyRef Name="TouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerProduct">
+              <PropertyRef Name="TouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_ConsumerPurchaseReason_PurchaseDynamic">
           <End Role="PurchaseDynamic" Type="CarmaModel.Store.PurchaseDynamic" Multiplicity="1" />
           <End Role="ConsumerPurchaseReason" Type="CarmaModel.Store.ConsumerPurchaseReason" Multiplicity="*" />
@@ -205,6 +413,18 @@
               <PropertyRef Name="ConsumerProductID" />
             </Principal>
             <Dependent Role="ConsumerPurchaseReason">
+              <PropertyRef Name="ConsumerProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductSatisfaction_ConsumerProduct">
+          <End Role="ConsumerProduct" Type="CarmaModel.Store.ConsumerProduct" Multiplicity="1" />
+          <End Role="ProductSatisfactionOld" Type="CarmaModel.Store.ProductSatisfactionOld" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerProduct">
+              <PropertyRef Name="ConsumerProductID" />
+            </Principal>
+            <Dependent Role="ProductSatisfactionOld">
               <PropertyRef Name="ConsumerProductID" />
             </Dependent>
           </ReferentialConstraint>
@@ -221,8 +441,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CarmaModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -258,6 +477,39 @@
             <End Role="PurchaseDynamic" EntitySet="PurchaseDynamics" />
             <End Role="ConsumerPurchaseReason" EntitySet="ConsumerPurchaseReasons" />
           </AssociationSet>
+          <EntitySet Name="TouchPoints" EntityType="CarmaModel.TouchPoint" />
+          <AssociationSet Name="FK_ConsumerLogInInfo_TouchPoint" Association="CarmaModel.FK_ConsumerLogInInfo_TouchPoint">
+            <End Role="TouchPoint" EntitySet="TouchPoints" />
+            <End Role="ConsumerLogInInfo" EntitySet="ConsumerLogInInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerProduct_TouchPoint" Association="CarmaModel.FK_ConsumerProduct_TouchPoint">
+            <End Role="TouchPoint" EntitySet="TouchPoints" />
+            <End Role="ConsumerProduct" EntitySet="ConsumerProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConsumerAccount_SourceInstance" Association="CarmaModel.FK_ConsumerAccount_SourceInstance">
+            <End Role="TouchPoint" EntitySet="TouchPoints" />
+            <End Role="ConsumerTouchPointProfile" EntitySet="ConsumerTouchPointProfiles" />
+          </AssociationSet>
+          <EntitySet Name="RecoveryQuestions" EntityType="CarmaModel.RecoveryQuestion" />
+          <AssociationSet Name="FK_ConsumerLogInInfo_RecoveryQuestion" Association="CarmaModel.FK_ConsumerLogInInfo_RecoveryQuestion">
+            <End Role="RecoveryQuestion" EntitySet="RecoveryQuestions" />
+            <End Role="ConsumerLogInInfo" EntitySet="ConsumerLogInInfoes" />
+          </AssociationSet>
+          <EntitySet Name="ProductSatisfactions" EntityType="CarmaModel.ProductSatisfaction" />
+          <EntitySet Name="ProductSatisfactionOlds" EntityType="CarmaModel.ProductSatisfactionOld" />
+          <AssociationSet Name="FK__ProductSa__Consu__521A10ED" Association="CarmaModel.FK__ProductSa__Consu__521A10ED">
+            <End Role="ConsumerProduct" EntitySet="ConsumerProducts" />
+            <End Role="ProductSatisfaction" EntitySet="ProductSatisfactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductSatisfaction_ConsumerProduct" Association="CarmaModel.FK_ProductSatisfaction_ConsumerProduct">
+            <End Role="ConsumerProduct" EntitySet="ConsumerProducts" />
+            <End Role="ProductSatisfactionOld" EntitySet="ProductSatisfactionOlds" />
+          </AssociationSet>
+          <EntitySet Name="StateSubDivisions" EntityType="CarmaModel.StateSubDivision" />
+          <AssociationSet Name="FK_ConsumerDemographic_StateSubDivision1" Association="CarmaModel.FK_ConsumerDemographic_StateSubDivision1">
+            <End Role="StateSubDivision" EntitySet="StateSubDivisions" />
+            <End Role="ConsumerDemographic" EntitySet="ConsumerDemographics" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="ConsumerDemographic">
           <Key>
@@ -284,6 +536,7 @@
           <Property Name="DateLastEdited" Type="DateTime" Precision="3" />
           <Property Name="GenderID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ConsumerTouchPointProfile" Relationship="CarmaModel.FK_ConsumerDemographic_ConsumerTouchPointProfile" FromRole="ConsumerDemographic" ToRole="ConsumerTouchPointProfile" />
+          <NavigationProperty Name="StateSubDivision" Relationship="CarmaModel.FK_ConsumerDemographic_StateSubDivision1" FromRole="ConsumerDemographic" ToRole="StateSubDivision" />
         </EntityType>
         <EntityType Name="ConsumerLogInInfo">
           <Key>
@@ -306,6 +559,8 @@
           <Property Name="Migrated" Type="Boolean" Nullable="false" />
           <Property Name="pwdh" Type="String" MaxLength="70" Unicode="true" FixedLength="true" />
           <NavigationProperty Name="ConsumerTouchPointProfile" Relationship="CarmaModel.FK_ConsumerLogInInfo_ConsumerTouchPointProfile" FromRole="ConsumerLogInInfo" ToRole="ConsumerTouchPointProfile" />
+          <NavigationProperty Name="TouchPoint" Relationship="CarmaModel.FK_ConsumerLogInInfo_TouchPoint" FromRole="ConsumerLogInInfo" ToRole="TouchPoint" />
+          <NavigationProperty Name="RecoveryQuestion" Relationship="CarmaModel.FK_ConsumerLogInInfo_RecoveryQuestion" FromRole="ConsumerLogInInfo" ToRole="RecoveryQuestion" />
         </EntityType>
         <EntityType Name="ConsumerOptIn">
           <Key>
@@ -336,6 +591,9 @@
           <Property Name="LikelyToPurchaseBrand" Type="Int32" />
           <NavigationProperty Name="ConsumerTouchPointProfile" Relationship="CarmaModel.FK_ConsumerProduct_ConsumerTouchPointProfile" FromRole="ConsumerProduct" ToRole="ConsumerTouchPointProfile" />
           <NavigationProperty Name="PurchaseDynamic" Relationship="CarmaModel.FK_PurchaseDynamic_ConsumerProduct" FromRole="ConsumerProduct" ToRole="PurchaseDynamic" />
+          <NavigationProperty Name="TouchPoint" Relationship="CarmaModel.FK_ConsumerProduct_TouchPoint" FromRole="ConsumerProduct" ToRole="TouchPoint" />
+          <NavigationProperty Name="ProductSatisfactions" Relationship="CarmaModel.FK__ProductSa__Consu__521A10ED" FromRole="ConsumerProduct" ToRole="ProductSatisfaction" />
+          <NavigationProperty Name="ProductSatisfactionOld" Relationship="CarmaModel.FK_ProductSatisfaction_ConsumerProduct" FromRole="ConsumerProduct" ToRole="ProductSatisfactionOld" />
         </EntityType>
         <EntityType Name="ConsumerPurchaseReason">
           <Key>
@@ -368,6 +626,7 @@
           <NavigationProperty Name="ConsumerLogInInfo" Relationship="CarmaModel.FK_ConsumerLogInInfo_ConsumerTouchPointProfile" FromRole="ConsumerTouchPointProfile" ToRole="ConsumerLogInInfo" />
           <NavigationProperty Name="ConsumerOptIns" Relationship="CarmaModel.FK_ConsumerOptIn_ConsumerTouchPoint" FromRole="ConsumerTouchPointProfile" ToRole="ConsumerOptIn" />
           <NavigationProperty Name="ConsumerProducts" Relationship="CarmaModel.FK_ConsumerProduct_ConsumerTouchPointProfile" FromRole="ConsumerTouchPointProfile" ToRole="ConsumerProduct" />
+          <NavigationProperty Name="TouchPoint" Relationship="CarmaModel.FK_ConsumerAccount_SourceInstance" FromRole="ConsumerTouchPointProfile" ToRole="TouchPoint" />
         </EntityType>
         <EntityType Name="PurchaseDynamic">
           <Key>
@@ -451,6 +710,200 @@
             </Principal>
             <Dependent Role="ConsumerPurchaseReason">
               <PropertyRef Name="ConsumerProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TouchPoint">
+          <Key>
+            <PropertyRef Name="TouchPointID" />
+          </Key>
+          <Property Type="Guid" Name="TouchPointID" Nullable="false" />
+          <Property Type="String" Name="TouchPointNameShort" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TouchPointNameLong" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="TouchPointTypeID" />
+          <Property Type="Guid" Name="TouchPointSystemID" Nullable="false" />
+          <Property Type="Int32" Name="BrandID" Nullable="false" />
+          <Property Type="DateTime" Name="DateCreated" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="DateStarted" Precision="3" />
+          <Property Type="DateTime" Name="DateEnded" Precision="3" />
+          <Property Type="Boolean" Name="IsActive" Nullable="false" />
+          <Property Type="String" Name="SourceKey" MaxLength="160" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConsumerLogInInfoes" Relationship="CarmaModel.FK_ConsumerLogInInfo_TouchPoint" FromRole="TouchPoint" ToRole="ConsumerLogInInfo" />
+          <NavigationProperty Name="ConsumerProducts" Relationship="CarmaModel.FK_ConsumerProduct_TouchPoint" FromRole="TouchPoint" ToRole="ConsumerProduct" />
+          <NavigationProperty Name="ConsumerTouchPointProfiles" Relationship="CarmaModel.FK_ConsumerAccount_SourceInstance" FromRole="TouchPoint" ToRole="ConsumerTouchPointProfile" />
+        </EntityType>
+        <Association Name="FK_ConsumerLogInInfo_TouchPoint">
+          <End Type="CarmaModel.TouchPoint" Role="TouchPoint" Multiplicity="1" />
+          <End Type="CarmaModel.ConsumerLogInInfo" Role="ConsumerLogInInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouchPoint">
+              <PropertyRef Name="TouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerLogInInfo">
+              <PropertyRef Name="TouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerProduct_TouchPoint">
+          <End Type="CarmaModel.TouchPoint" Role="TouchPoint" Multiplicity="1" />
+          <End Type="CarmaModel.ConsumerProduct" Role="ConsumerProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouchPoint">
+              <PropertyRef Name="TouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerProduct">
+              <PropertyRef Name="TouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConsumerAccount_SourceInstance">
+          <End Type="CarmaModel.TouchPoint" Role="TouchPoint" Multiplicity="1" />
+          <End Type="CarmaModel.ConsumerTouchPointProfile" Role="ConsumerTouchPointProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TouchPoint">
+              <PropertyRef Name="TouchPointID" />
+            </Principal>
+            <Dependent Role="ConsumerTouchPointProfile">
+              <PropertyRef Name="TouchPointID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RecoveryQuestion">
+          <Key>
+            <PropertyRef Name="RecoveryQuestionID" />
+          </Key>
+          <Property Type="Int32" Name="RecoveryQuestionID" Nullable="false" />
+          <Property Type="String" Name="RecoveryQuestionText" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConsumerLogInInfoes" Relationship="CarmaModel.FK_ConsumerLogInInfo_RecoveryQuestion" FromRole="RecoveryQuestion" ToRole="ConsumerLogInInfo" />
+        </EntityType>
+        <Association Name="FK_ConsumerLogInInfo_RecoveryQuestion">
+          <End Type="CarmaModel.RecoveryQuestion" Role="RecoveryQuestion" Multiplicity="1" />
+          <End Type="CarmaModel.ConsumerLogInInfo" Role="ConsumerLogInInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecoveryQuestion">
+              <PropertyRef Name="RecoveryQuestionID" />
+            </Principal>
+            <Dependent Role="ConsumerLogInInfo">
+              <PropertyRef Name="RecoveryQuestionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProductSatisfaction">
+          <Key>
+            <PropertyRef Name="ConsumerProductID" />
+            <PropertyRef Name="ProductSatisfactionTypeID" />
+          </Key>
+          <Property Type="Guid" Name="ConsumerProductID" Nullable="false" />
+          <Property Type="Int32" Name="ProductSatisfactionTypeID" Nullable="false" />
+          <Property Type="DateTime" Name="DateSurveyCompleted" Nullable="false" Precision="0" />
+          <Property Type="Int32" Name="LikelyToRecommendProduct" />
+          <Property Type="Int32" Name="LikelyToRecommendBrand" />
+          <Property Type="Int32" Name="LikelyToPurchaseBrand" />
+          <Property Type="Int32" Name="NumberOfTimesUsedID" />
+          <Property Type="Int32" Name="PerformanceExpectationLevelID" />
+          <Property Type="Int32" Name="PurchasingActivityID" />
+          <Property Type="Boolean" Name="ContactCustomerServiceByPhone" />
+          <Property Type="Boolean" Name="ContactCustomerServiceByEmail" />
+          <Property Type="Boolean" Name="VisitedWebSiteForProductInfo" />
+          <Property Type="Boolean" Name="VisitedWebSiteForProjectInfo" />
+          <Property Type="Boolean" Name="VisitedWebSiteForCustomerServiceInfo" />
+          <Property Type="Boolean" Name="VisitedWebSiteForAnyOtherReason" />
+          <Property Type="Boolean" Name="VisitedServiceCenter" />
+          <Property Type="Boolean" Name="ReceivedEmailFromBrand" />
+          <Property Type="Boolean" Name="DoNotRecallAny" />
+          <Property Type="String" Name="PositiveFeedback" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ConstructiveFeedback" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConsumerProduct" Relationship="CarmaModel.FK__ProductSa__Consu__521A10ED" FromRole="ProductSatisfaction" ToRole="ConsumerProduct" />
+        </EntityType>
+        <EntityType Name="ProductSatisfactionOld">
+          <Key>
+            <PropertyRef Name="ConsumerProductID" />
+          </Key>
+          <Property Type="Guid" Name="ConsumerProductID" Nullable="false" />
+          <Property Type="Int32" Name="LikelyToRecommendProduct" />
+          <Property Type="Int32" Name="LikelyToRecommendProduct6week" />
+          <Property Type="Int32" Name="LikelyToRecommendProduct6month" />
+          <Property Type="Int32" Name="LikelyToRecommendBrand6week" />
+          <Property Type="Int32" Name="LikelyToRecommendBrand6month" />
+          <Property Type="Int32" Name="LikelyToPurchaseBrand" />
+          <Property Type="Int32" Name="LikelyToPurchaseBrand6week" />
+          <Property Type="Int32" Name="LikelyToPurchaseBrand6month" />
+          <Property Type="Int32" Name="NumberOfTimesUsedID6week" />
+          <Property Type="Int32" Name="NumberOfTimesUsedID6month" />
+          <Property Type="Int32" Name="PerformanceExpectationLevelID6week" />
+          <Property Type="Int32" Name="PerformanceExpectationLevelID6month" />
+          <Property Type="Int32" Name="PurchasingActivityID6week" />
+          <Property Type="Int32" Name="PurchasingActivityID6month" />
+          <Property Type="Boolean" Name="ContactCustomerServiceByPhone6week" />
+          <Property Type="Boolean" Name="ContactCustomerServiceByPhone6month" />
+          <Property Type="Boolean" Name="ContactCustomerServiceByEmail6week" />
+          <Property Type="Boolean" Name="ContactCustomerServiceByEmail6month" />
+          <Property Type="Boolean" Name="VisitedWebSiteforProductInfo6week" />
+          <Property Type="Boolean" Name="VisitedWebSiteforProductInfo6month" />
+          <Property Type="Boolean" Name="VisitedWebSiteforProjectInfo6week" />
+          <Property Type="Boolean" Name="VisitedWebSiteforProjectInfo6month" />
+          <Property Type="Boolean" Name="VisitedWebSiteforCustServiceInfo6week" />
+          <Property Type="Boolean" Name="VisitedWebSiteforCustServiceInfo6month" />
+          <Property Type="Boolean" Name="VisitedWebSiteforAnyOtherReason6week" />
+          <Property Type="Boolean" Name="VisitedWebSiteforAnyOtherReason6month" />
+          <Property Type="Boolean" Name="VisitedServiceCenter6week" />
+          <Property Type="Boolean" Name="VisitedServiceCenter6month" />
+          <Property Type="Boolean" Name="ReceivedEmailFromBrand6week" />
+          <Property Type="Boolean" Name="ReceivedEmailFromBrand6month" />
+          <Property Type="Boolean" Name="DoNotRecallAny6week" />
+          <Property Type="Boolean" Name="DoNotRecallAny6month" />
+          <Property Type="String" Name="PositiveFeedback6week" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PositiveFeedback6month" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ConstructiveFeedback6week" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ConstructiveFeedback6month" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Date6weekSurveyTaken" Precision="0" />
+          <Property Type="DateTime" Name="Date6monthSurveyTaken" Precision="0" />
+          <Property Type="DateTime" Name="DateMostRecentResponse" Precision="0" />
+          <NavigationProperty Name="ConsumerProduct" Relationship="CarmaModel.FK_ProductSatisfaction_ConsumerProduct" FromRole="ProductSatisfactionOld" ToRole="ConsumerProduct" />
+        </EntityType>
+        <Association Name="FK__ProductSa__Consu__521A10ED">
+          <End Type="CarmaModel.ConsumerProduct" Role="ConsumerProduct" Multiplicity="1" />
+          <End Type="CarmaModel.ProductSatisfaction" Role="ProductSatisfaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerProduct">
+              <PropertyRef Name="ConsumerProductID" />
+            </Principal>
+            <Dependent Role="ProductSatisfaction">
+              <PropertyRef Name="ConsumerProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductSatisfaction_ConsumerProduct">
+          <End Type="CarmaModel.ConsumerProduct" Role="ConsumerProduct" Multiplicity="1" />
+          <End Type="CarmaModel.ProductSatisfactionOld" Role="ProductSatisfactionOld" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="ConsumerProduct">
+              <PropertyRef Name="ConsumerProductID" />
+            </Principal>
+            <Dependent Role="ProductSatisfactionOld">
+              <PropertyRef Name="ConsumerProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StateSubDivision">
+          <Key>
+            <PropertyRef Name="StateSubDivisionID" />
+          </Key>
+          <Property Type="Int32" Name="StateSubDivisionID" Nullable="false" />
+          <Property Type="String" Name="StateSubDivisionFullName" Nullable="false" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StateSubDivisionAbbreviation" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <NavigationProperty Name="ConsumerDemographics" Relationship="CarmaModel.FK_ConsumerDemographic_StateSubDivision1" FromRole="StateSubDivision" ToRole="ConsumerDemographic" />
+        </EntityType>
+        <Association Name="FK_ConsumerDemographic_StateSubDivision1">
+          <End Type="CarmaModel.StateSubDivision" Role="StateSubDivision" Multiplicity="1" />
+          <End Type="CarmaModel.ConsumerDemographic" Role="ConsumerDemographic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateSubDivision">
+              <PropertyRef Name="StateSubDivisionID" />
+            </Principal>
+            <Dependent Role="ConsumerDemographic">
+              <PropertyRef Name="StateSubDivisionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -573,6 +1026,113 @@
                 <ScalarProperty Name="RetailerID" ColumnName="RetailerID" />
                 <ScalarProperty Name="GiftTypeID" ColumnName="GiftTypeID" />
                 <ScalarProperty Name="IntendedUsageID" ColumnName="IntendedUsageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TouchPoints">
+            <EntityTypeMapping TypeName="CarmaModel.TouchPoint">
+              <MappingFragment StoreEntitySet="TouchPoint">
+                <ScalarProperty Name="SourceKey" ColumnName="SourceKey" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateEnded" ColumnName="DateEnded" />
+                <ScalarProperty Name="DateStarted" ColumnName="DateStarted" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="TouchPointSystemID" ColumnName="TouchPointSystemID" />
+                <ScalarProperty Name="TouchPointTypeID" ColumnName="TouchPointTypeID" />
+                <ScalarProperty Name="TouchPointNameLong" ColumnName="TouchPointNameLong" />
+                <ScalarProperty Name="TouchPointNameShort" ColumnName="TouchPointNameShort" />
+                <ScalarProperty Name="TouchPointID" ColumnName="TouchPointID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecoveryQuestions">
+            <EntityTypeMapping TypeName="CarmaModel.RecoveryQuestion">
+              <MappingFragment StoreEntitySet="RecoveryQuestion">
+                <ScalarProperty Name="RecoveryQuestionText" ColumnName="RecoveryQuestionText" />
+                <ScalarProperty Name="RecoveryQuestionID" ColumnName="RecoveryQuestionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductSatisfactions">
+            <EntityTypeMapping TypeName="CarmaModel.ProductSatisfaction">
+              <MappingFragment StoreEntitySet="ProductSatisfaction">
+                <ScalarProperty Name="ConstructiveFeedback" ColumnName="ConstructiveFeedback" />
+                <ScalarProperty Name="PositiveFeedback" ColumnName="PositiveFeedback" />
+                <ScalarProperty Name="DoNotRecallAny" ColumnName="DoNotRecallAny" />
+                <ScalarProperty Name="ReceivedEmailFromBrand" ColumnName="ReceivedEmailFromBrand" />
+                <ScalarProperty Name="VisitedServiceCenter" ColumnName="VisitedServiceCenter" />
+                <ScalarProperty Name="VisitedWebSiteForAnyOtherReason" ColumnName="VisitedWebSiteForAnyOtherReason" />
+                <ScalarProperty Name="VisitedWebSiteForCustomerServiceInfo" ColumnName="VisitedWebSiteForCustomerServiceInfo" />
+                <ScalarProperty Name="VisitedWebSiteForProjectInfo" ColumnName="VisitedWebSiteForProjectInfo" />
+                <ScalarProperty Name="VisitedWebSiteForProductInfo" ColumnName="VisitedWebSiteForProductInfo" />
+                <ScalarProperty Name="ContactCustomerServiceByEmail" ColumnName="ContactCustomerServiceByEmail" />
+                <ScalarProperty Name="ContactCustomerServiceByPhone" ColumnName="ContactCustomerServiceByPhone" />
+                <ScalarProperty Name="PurchasingActivityID" ColumnName="PurchasingActivityID" />
+                <ScalarProperty Name="PerformanceExpectationLevelID" ColumnName="PerformanceExpectationLevelID" />
+                <ScalarProperty Name="NumberOfTimesUsedID" ColumnName="NumberOfTimesUsedID" />
+                <ScalarProperty Name="LikelyToPurchaseBrand" ColumnName="LikelyToPurchaseBrand" />
+                <ScalarProperty Name="LikelyToRecommendBrand" ColumnName="LikelyToRecommendBrand" />
+                <ScalarProperty Name="LikelyToRecommendProduct" ColumnName="LikelyToRecommendProduct" />
+                <ScalarProperty Name="DateSurveyCompleted" ColumnName="DateSurveyCompleted" />
+                <ScalarProperty Name="ProductSatisfactionTypeID" ColumnName="ProductSatisfactionTypeID" />
+                <ScalarProperty Name="ConsumerProductID" ColumnName="ConsumerProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductSatisfactionOlds">
+            <EntityTypeMapping TypeName="CarmaModel.ProductSatisfactionOld">
+              <MappingFragment StoreEntitySet="ProductSatisfactionOld">
+                <ScalarProperty Name="DateMostRecentResponse" ColumnName="DateMostRecentResponse" />
+                <ScalarProperty Name="Date6monthSurveyTaken" ColumnName="Date6monthSurveyTaken" />
+                <ScalarProperty Name="Date6weekSurveyTaken" ColumnName="Date6weekSurveyTaken" />
+                <ScalarProperty Name="ConstructiveFeedback6month" ColumnName="ConstructiveFeedback6month" />
+                <ScalarProperty Name="ConstructiveFeedback6week" ColumnName="ConstructiveFeedback6week" />
+                <ScalarProperty Name="PositiveFeedback6month" ColumnName="PositiveFeedback6month" />
+                <ScalarProperty Name="PositiveFeedback6week" ColumnName="PositiveFeedback6week" />
+                <ScalarProperty Name="DoNotRecallAny6month" ColumnName="DoNotRecallAny6month" />
+                <ScalarProperty Name="DoNotRecallAny6week" ColumnName="DoNotRecallAny6week" />
+                <ScalarProperty Name="ReceivedEmailFromBrand6month" ColumnName="ReceivedEmailFromBrand6month" />
+                <ScalarProperty Name="ReceivedEmailFromBrand6week" ColumnName="ReceivedEmailFromBrand6week" />
+                <ScalarProperty Name="VisitedServiceCenter6month" ColumnName="VisitedServiceCenter6month" />
+                <ScalarProperty Name="VisitedServiceCenter6week" ColumnName="VisitedServiceCenter6week" />
+                <ScalarProperty Name="VisitedWebSiteforAnyOtherReason6month" ColumnName="VisitedWebSiteforAnyOtherReason6month" />
+                <ScalarProperty Name="VisitedWebSiteforAnyOtherReason6week" ColumnName="VisitedWebSiteforAnyOtherReason6week" />
+                <ScalarProperty Name="VisitedWebSiteforCustServiceInfo6month" ColumnName="VisitedWebSiteforCustServiceInfo6month" />
+                <ScalarProperty Name="VisitedWebSiteforCustServiceInfo6week" ColumnName="VisitedWebSiteforCustServiceInfo6week" />
+                <ScalarProperty Name="VisitedWebSiteforProjectInfo6month" ColumnName="VisitedWebSiteforProjectInfo6month" />
+                <ScalarProperty Name="VisitedWebSiteforProjectInfo6week" ColumnName="VisitedWebSiteforProjectInfo6week" />
+                <ScalarProperty Name="VisitedWebSiteforProductInfo6month" ColumnName="VisitedWebSiteforProductInfo6month" />
+                <ScalarProperty Name="VisitedWebSiteforProductInfo6week" ColumnName="VisitedWebSiteforProductInfo6week" />
+                <ScalarProperty Name="ContactCustomerServiceByEmail6month" ColumnName="ContactCustomerServiceByEmail6month" />
+                <ScalarProperty Name="ContactCustomerServiceByEmail6week" ColumnName="ContactCustomerServiceByEmail6week" />
+                <ScalarProperty Name="ContactCustomerServiceByPhone6month" ColumnName="ContactCustomerServiceByPhone6month" />
+                <ScalarProperty Name="ContactCustomerServiceByPhone6week" ColumnName="ContactCustomerServiceByPhone6week" />
+                <ScalarProperty Name="PurchasingActivityID6month" ColumnName="PurchasingActivityID6month" />
+                <ScalarProperty Name="PurchasingActivityID6week" ColumnName="PurchasingActivityID6week" />
+                <ScalarProperty Name="PerformanceExpectationLevelID6month" ColumnName="PerformanceExpectationLevelID6month" />
+                <ScalarProperty Name="PerformanceExpectationLevelID6week" ColumnName="PerformanceExpectationLevelID6week" />
+                <ScalarProperty Name="NumberOfTimesUsedID6month" ColumnName="NumberOfTimesUsedID6month" />
+                <ScalarProperty Name="NumberOfTimesUsedID6week" ColumnName="NumberOfTimesUsedID6week" />
+                <ScalarProperty Name="LikelyToPurchaseBrand6month" ColumnName="LikelyToPurchaseBrand6month" />
+                <ScalarProperty Name="LikelyToPurchaseBrand6week" ColumnName="LikelyToPurchaseBrand6week" />
+                <ScalarProperty Name="LikelyToPurchaseBrand" ColumnName="LikelyToPurchaseBrand" />
+                <ScalarProperty Name="LikelyToRecommendBrand6month" ColumnName="LikelyToRecommendBrand6month" />
+                <ScalarProperty Name="LikelyToRecommendBrand6week" ColumnName="LikelyToRecommendBrand6week" />
+                <ScalarProperty Name="LikelyToRecommendProduct6month" ColumnName="LikelyToRecommendProduct6month" />
+                <ScalarProperty Name="LikelyToRecommendProduct6week" ColumnName="LikelyToRecommendProduct6week" />
+                <ScalarProperty Name="LikelyToRecommendProduct" ColumnName="LikelyToRecommendProduct" />
+                <ScalarProperty Name="ConsumerProductID" ColumnName="ConsumerProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateSubDivisions">
+            <EntityTypeMapping TypeName="CarmaModel.StateSubDivision">
+              <MappingFragment StoreEntitySet="StateSubDivision">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateSubDivisionAbbreviation" ColumnName="StateSubDivisionAbbreviation" />
+                <ScalarProperty Name="StateSubDivisionFullName" ColumnName="StateSubDivisionFullName" />
+                <ScalarProperty Name="StateSubDivisionID" ColumnName="StateSubDivisionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

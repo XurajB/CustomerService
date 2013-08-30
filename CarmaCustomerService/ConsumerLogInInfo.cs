@@ -32,5 +32,7 @@ namespace CarmaCustomerService
         public string pwdh { get; set; }
     
         public virtual ConsumerTouchPointProfile ConsumerTouchPointProfile { get; set; }
+        public virtual TouchPoint TouchPoint { get; set; }
+        public virtual RecoveryQuestion RecoveryQuestion { get; set; }
     }
 }

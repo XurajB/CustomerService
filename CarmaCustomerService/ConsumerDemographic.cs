@@ -36,5 +36,6 @@ namespace CarmaCustomerService
         public int GenderID { get; set; }
     
         public virtual ConsumerTouchPointProfile ConsumerTouchPointProfile { get; set; }
+        public virtual StateSubDivision StateSubDivision { get; set; }
     }
 }

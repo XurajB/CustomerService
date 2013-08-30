@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://carma.bdk.com/Services/Core/Types" elementFormDefault="qualified" targetNamespace="http://carma.bdk.com/Services/Core/Types" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="Websites">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BlackAndDecker" />
+      <xs:enumeration value="DeWALT" />
+      <xs:enumeration value="DeltaPorterCable" />
+      <xs:enumeration value="RechargeYourYard" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Websites" nillable="true" type="tns:Websites" />
+  <xs:simpleType name="Countries">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Unknown" />
+      <xs:enumeration value="UnitedStates" />
+      <xs:enumeration value="Canada" />
+      <xs:enumeration value="Other" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Countries" nillable="true" type="tns:Countries" />
+</xs:schema>

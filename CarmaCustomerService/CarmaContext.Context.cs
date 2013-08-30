@@ -32,5 +32,10 @@ namespace CarmaCustomerService
         public DbSet<ConsumerPurchaseReason> ConsumerPurchaseReasons { get; set; }
         public DbSet<ConsumerTouchPointProfile> ConsumerTouchPointProfiles { get; set; }
         public DbSet<PurchaseDynamic> PurchaseDynamics { get; set; }
+        public DbSet<TouchPoint> TouchPoints { get; set; }
+        public DbSet<RecoveryQuestion> RecoveryQuestions { get; set; }
+        public DbSet<ProductSatisfaction> ProductSatisfactions { get; set; }
+        public DbSet<ProductSatisfactionOld> ProductSatisfactionOlds { get; set; }
+        public DbSet<StateSubDivision> StateSubDivisions { get; set; }
     }
 }
