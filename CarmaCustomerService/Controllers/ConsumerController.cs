@@ -8,8 +8,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using CarmaCustomerService.BI;
-using CarmaCustomerService.Dto;
 
 namespace CarmaCustomerService.Controllers
 {
